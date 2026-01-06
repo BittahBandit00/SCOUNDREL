@@ -17,7 +17,7 @@ public static class Rules
         Console.WriteLine("HOW TO PLAY                    ");
         Console.WriteLine("==============================================================================");
         Console.WriteLine();
-        Console.WriteLine("Welcome to SCOUNDREL — a fast, brutal, card‑driven dungeon crawl.");
+        Console.WriteLine("Welcome to SCOUNDREL — a fast, brutal, card-driven dungeon crawl.");
         Console.WriteLine("Your goal is simple: survive the deck and outlast the dungeon.");
         Console.WriteLine();
         Console.WriteLine("The deck *is* the dungeon. Every card you draw is a room filled with an enemy,");
@@ -41,8 +41,8 @@ public static class Rules
         Console.WriteLine("      • Their value is their attack strength — you take that much damage.");
         Console.WriteLine("      • Your weapon reduces incoming damage by its value.");
         Console.WriteLine("      • With NO weapon, you always take the full attack value.");
-        Console.WriteLine("      • You may choose to fight an enemy BARE‑HANDED at any time.");
-        Console.WriteLine("      • Bare‑handed fights ignore your weapon and deal full damage.");
+        Console.WriteLine("      • You may choose to fight an enemy with your FISTS at any time.");
+        Console.WriteLine("      • Fist fights ignore your weapon and deal full damage.");
         Console.WriteLine();
 
         // ===================== WEAPONS =====================
@@ -53,8 +53,8 @@ public static class Rules
         Console.WriteLine("      • Defeating an enemy sets your weapon's durability to its value.");
         Console.WriteLine("      • If your weapon's durability is lower than the enemy's strength,");
         Console.WriteLine("        it fails to protect you and deals no damage reduction.");
-        Console.WriteLine("      • A failed weapon strike forces a bare‑handed fight instead.");
-        Console.WriteLine("      • Choosing to fight bare‑handed does NOT destroy your weapon.");
+        Console.WriteLine("      • A failed weapon strike forces a fist fight instead.");
+        Console.WriteLine("      • Choosing to fist fight does NOT destroy your weapon.");
         Console.WriteLine();
 
         // ===================== POTIONS =====================
@@ -76,10 +76,10 @@ public static class Rules
         Console.WriteLine();
         Console.WriteLine("  FIGHT");
         Console.WriteLine("      • Select a card (1–4) and resolve its effect immediately.");
-        Console.WriteLine("      • Add 'B' or 'F' to your choice to fight bare‑handed.");
+        Console.WriteLine("      • Add 'B' or 'F' to your choice to fight with your fists.");
         Console.WriteLine("        Example:  '2B'  fights card 2 using your fists.");
-        Console.WriteLine("      • Bare‑handed attacks ignore your weapon and deal full damage.");
-        Console.WriteLine("      • Bare‑handed attacks never change or replace your weapon.");
+        Console.WriteLine("      • Fist attacks ignore your weapon and deal full damage.");
+        Console.WriteLine("      • Fist attacks never change or replace your weapon.");
         Console.WriteLine();
         Console.WriteLine("  RUN");
         Console.WriteLine("      • Sends the chosen enemy to the *bottom* of the deck.");

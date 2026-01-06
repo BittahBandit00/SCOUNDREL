@@ -37,7 +37,7 @@ public class Renderer
     {
         if (weapon == null || weapon.Count == 0)
         {
-            Console.WriteLine(" WEAPON: 0");
+            Console.WriteLine(" WEAPON: FISTS");
             return;
         }
 
