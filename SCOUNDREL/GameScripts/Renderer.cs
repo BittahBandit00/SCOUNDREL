@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
+
 
 public class Renderer
 {
+
     public void PrintRoom(List<Card> room, int health, List<Card> weapon)
     {
         Console.Clear();
@@ -26,13 +29,15 @@ public class Renderer
         PrintWeapon(weapon);
         Console.WriteLine("----------------------------------------------");
         Console.WriteLine();
+
     }
+
 
     private void PrintWeapon(List<Card> weapon)
     {
         if (weapon == null || weapon.Count == 0)
         {
-            Console.WriteLine(" WEAPON: (none)");
+            Console.WriteLine(" WEAPON: 0");
             return;
         }
 
@@ -54,7 +59,7 @@ public class Renderer
     {
         var original = Console.ForegroundColor;
 
-        if (card.Suit == "♥" || card.Suit == "♦")
+        if (card.Suit == "♥" || card.Suit == "◇")
             Console.ForegroundColor = ConsoleColor.Red;
         else
             Console.ForegroundColor = ConsoleColor.DarkCyan;
@@ -82,5 +87,27 @@ public class Renderer
         Console.WriteLine("   Press Enter to return to the main menu...");
         Console.ReadLine();
     }
+
+    public void PrintDefeat()
+    {
+        Console.Clear();
+
+        Console.WriteLine("====================================================");
+        Console.WriteLine("                    D E F E A T                     ");
+        Console.WriteLine("====================================================");
+        Console.WriteLine();
+        Console.WriteLine("   Your journey ends here.");
+        Console.WriteLine("   The dungeon claims another soul.");
+        Console.WriteLine("   The deck is not empty...");
+        Console.WriteLine("   but you are.");
+        Console.WriteLine();
+        Console.WriteLine("----------------------------------------------------");
+        Console.WriteLine("                 BETTER LUCK NEXT TIME              ");
+        Console.WriteLine("----------------------------------------------------");
+        Console.WriteLine();
+        Console.WriteLine("   Press Enter to return to the main menu...");
+        Console.ReadLine();
+    }
+
 
 }

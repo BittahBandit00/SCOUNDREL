@@ -15,6 +15,7 @@ public class Game
 
     private List<Card> weapon = new List<Card>();
 
+
     public bool enteringRoom = true;
     public bool hasHealed = false;
 
@@ -32,6 +33,7 @@ public class Game
         {
             renderer.PrintRoom(dungeon.CurrentRoom, health.GetHealth(), weapon);
 
+
             if (enteringRoom)
             {
                 HandleAction();
@@ -42,15 +44,16 @@ public class Game
                 HandleCardSelection();
             }
 
-            if(deck.GetCardCount() == 0 && dungeon.CurrentRoom.Count == 0)
+            if (deck.GetCardCount() == 0 && dungeon.CurrentRoom.Count == 0)
             {
                 renderer.PrintWin();
                 return;
             }
 
-            if(health.GetHealth() == 0)
+            if (health.GetHealth() == 0)
             {
-                // lose condition
+                renderer.PrintDefeat();
+                return;
             }
         }
     }
@@ -62,7 +65,7 @@ public class Game
         if (action == "fight" || action == "f")
             return;
 
-        if (action == "run" || action == "r")
+        if (action == "run" || action == "r")                   // OPTIONAL RULE -> INCREASE SKIP COUNT TO 2
         {
             dungeon.SkipRoom();
             hasHealed = false;
@@ -70,12 +73,31 @@ public class Game
             return;
         }
 
-            Console.WriteLine("Unknown action.");
+        Console.WriteLine("Unknown action.");
     }
 
     private void HandleCardSelection()
     {
-        int index = input.GetCardSelection(dungeon.CurrentRoom.Count);
+        string raw = input.GetCardSelection(dungeon.CurrentRoom.Count);
+
+        bool useFists = false;
+
+        string trimmed = raw.Trim().ToLower();
+
+        // detect bare‑handed mode
+        if (trimmed.EndsWith("b") || trimmed.EndsWith("bare") || trimmed.EndsWith("fists") || trimmed.EndsWith("f"))
+        {
+            useFists = true;
+            trimmed = new string(trimmed.TakeWhile(char.IsDigit).ToArray());
+        }
+
+        if (!int.TryParse(trimmed, out int index))
+        {
+            Console.WriteLine("Invalid selection.");
+            return;
+        }
+
+        index -= 1;
 
         if (index < 0 || index >= dungeon.CurrentRoom.Count)
         {
@@ -86,8 +108,7 @@ public class Game
         Card chosen = dungeon.CurrentRoom[index];
         dungeon.CurrentRoom.RemoveAt(index);
 
-        Console.WriteLine("You selected: " + chosen);
-        ResolveCard(chosen);
+        ResolveCard(chosen, useFists);
 
         if (dungeon.CurrentRoom.Count == 1 && deck.GetCardCount() > 0)
         {
@@ -97,7 +118,9 @@ public class Game
         }
     }
 
-    private void ResolveHeart(Card card)
+
+
+    private void ResolveHeart(Card card)            // OPTIONAL RULES CANDIDATE - HEAL AS MANY TIMES
     {
         if (hasHealed)
             return;
@@ -105,7 +128,7 @@ public class Game
         health.Heal(card.GetValue());
         hasHealed = true;
     }
-    
+
     private void ResolveDiamond(Card card)
     {
         weapon.Clear();
@@ -113,33 +136,46 @@ public class Game
 
     }
 
-    private void ResolveEnemy(Card card)
+    private void ResolveEnemy(Card card, bool useFists)
     {
-        int weaponValue;
-        int damage = 0;
-         
-        // pretty sure if latest weapon card is enemy, and the enemy card is higher, you fight bare fisted
+        int weaponValue = 0;
 
+        // If using weapon, get its value
+        if (!useFists && weapon.Count > 0)
+            weaponValue = weapon.Last().GetValue();
+
+        int enemyValue = card.GetValue();
+        int damage = 0;
+
+        // If weapon is an enemy card and too weak, it breaks → forced fists
+        if (!useFists && weapon.Count > 0 && (weapon.Last().Suit == "♣" || weapon.Last().Suit == "♠"))
+        {
+            if (enemyValue >= weaponValue)
+            {
+                weaponValue = 0;
+                useFists = true;
+            }
+        }
+
+        // If you have no weapon at all → forced fists
         if (weapon.Count == 0)
-        {
-            weaponValue = 0;
-        }
-        else
-        {
-            weaponValue = weapon.Last<Card>().GetValue();
-        }
-        
-        if (card.GetValue() > weaponValue)
-        {
-            damage = card.GetValue() - weaponValue;
-        }
+            useFists = true;
+
+        // Damage calculation
+        if (enemyValue > weaponValue)
+            damage = enemyValue - weaponValue;
 
         health.Damage(damage);
 
-        weapon.Add(card);
+        // Only add monster as weapon if NOT bare‑handed
+        if (!useFists)
+            weapon.Add(card);
     }
 
-    private void ResolveCard(Card card)
+
+
+
+    private void ResolveCard(Card card, bool useFists)
     {
         switch (card.Suit)
         {
@@ -147,16 +183,17 @@ public class Game
                 ResolveHeart(card);
                 break;
 
-            case "♦":
+            case "◇":
                 ResolveDiamond(card);
                 break;
 
             case "♣":
             case "♠":
-                ResolveEnemy(card);
+                ResolveEnemy(card, useFists);
                 break;
         }
     }
+
 }
 
 // "♣", "♠", "♥", "♦" 

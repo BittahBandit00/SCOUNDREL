@@ -1,26 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 public class InputController
 {
     public string GetAction()
     {
-        Console.Write("Type: Fight or Run > ");
+        Console.WriteLine("ACTIONS");
+        Console.WriteLine();
+        Console.WriteLine("  [F]   FIGHT");
+        Console.WriteLine("  [R]   RUN");
+        Console.WriteLine();
+        Console.Write(">> ");
         return Console.ReadLine().Trim().ToLower();
     }
 
-    public int GetCardSelection(int max)
+    public string GetCardSelection(int max)
     {
-        Console.Write($"Select card (1-{max}): ");
-        string input = Console.ReadLine().Trim();
+        Console.WriteLine("CARD SELECTION");
+        Console.WriteLine();
+        Console.WriteLine($"  [1–{max}]   Choose a card");
+        Console.WriteLine();
+        Console.Write(">> ");
+        return Console.ReadLine().Trim().ToLower();
+    }
 
-        if (int.TryParse(input, out int index))
-            return index - 1;
-
-        return -1;
+    public string GetRawInput()
+    {
+        return Console.ReadLine().Trim().ToLower();
     }
 }
-

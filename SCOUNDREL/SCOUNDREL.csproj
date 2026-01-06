@@ -45,15 +45,15 @@
   <ItemGroup>
     <Compile Include="Cards\Card.cs" />
     <Compile Include="Cards\Deck.cs" />
+    <Compile Include="Menu\Credits.cs" />
     <Compile Include="GameScripts\Dungeon.cs" />
     <Compile Include="GameScripts\Game.cs" />
     <Compile Include="GameScripts\Health.cs" />
     <Compile Include="GameScripts\InputController.cs" />
-    <Compile Include="GameScripts\MainMenu.cs" />
+    <Compile Include="Menu\MainMenu.cs" />
     <Compile Include="GameScripts\Renderer.cs" />
-    <Compile Include="GameScripts\Rules.cs" />
-    <Compile Include="GameScripts\Start.cs" />
-    <Compile Include="GameScripts\Weapon.cs" />
+    <Compile Include="Menu\Rules.cs" />
+    <Compile Include="GameScripts\MainProgram.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

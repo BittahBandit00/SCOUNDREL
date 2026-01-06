@@ -1,0 +1,207 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\UNITY\\GitHub Projects\\SCOUNDREL\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|d:\\unity\\github projects\\scoundrel\\scoundrel\\menu\\mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|solutionrelative:scoundrel\\menu\\mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|d:\\unity\\github projects\\scoundrel\\scoundrel\\menu\\credits.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|solutionrelative:scoundrel\\menu\\credits.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|d:\\unity\\github projects\\scoundrel\\scoundrel\\gamescripts\\inputcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|solutionrelative:scoundrel\\gamescripts\\inputcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|d:\\unity\\github projects\\scoundrel\\scoundrel\\gamescripts\\renderer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|solutionrelative:scoundrel\\gamescripts\\renderer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|d:\\unity\\github projects\\scoundrel\\scoundrel\\gamescripts\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|solutionrelative:scoundrel\\gamescripts\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|d:\\unity\\github projects\\scoundrel\\scoundrel\\gamescripts\\health.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|solutionrelative:scoundrel\\gamescripts\\health.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|d:\\unity\\github projects\\scoundrel\\scoundrel\\gamescripts\\mainprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|solutionrelative:scoundrel\\gamescripts\\mainprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|d:\\unity\\github projects\\scoundrel\\scoundrel\\gamescripts\\dungeon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|solutionrelative:scoundrel\\gamescripts\\dungeon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|d:\\unity\\github projects\\scoundrel\\scoundrel\\menu\\rules.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|solutionrelative:scoundrel\\menu\\rules.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|d:\\unity\\github projects\\scoundrel\\scoundrel\\cards\\deck.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|solutionrelative:scoundrel\\cards\\deck.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|d:\\unity\\github projects\\scoundrel\\scoundrel\\cards\\card.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|solutionrelative:scoundrel\\cards\\card.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Renderer.cs",
+              "DocumentMoniker": "D:\\UNITY\\GitHub Projects\\SCOUNDREL\\SCOUNDREL\\GameScripts\\Renderer.cs",
+              "RelativeDocumentMoniker": "SCOUNDREL\\GameScripts\\Renderer.cs",
+              "ToolTip": "D:\\UNITY\\GitHub Projects\\SCOUNDREL\\SCOUNDREL\\GameScripts\\Renderer.cs",
+              "RelativeToolTip": "SCOUNDREL\\GameScripts\\Renderer.cs",
+              "ViewState": "AgIAAFYAAAAAAAAAAAAIwGsAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-06T00:52:10.263Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Health.cs",
+              "DocumentMoniker": "D:\\UNITY\\GitHub Projects\\SCOUNDREL\\SCOUNDREL\\GameScripts\\Health.cs",
+              "RelativeDocumentMoniker": "SCOUNDREL\\GameScripts\\Health.cs",
+              "ToolTip": "D:\\UNITY\\GitHub Projects\\SCOUNDREL\\SCOUNDREL\\GameScripts\\Health.cs",
+              "RelativeToolTip": "SCOUNDREL\\GameScripts\\Health.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-06T00:43:21.548Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "InputController.cs",
+              "DocumentMoniker": "D:\\UNITY\\GitHub Projects\\SCOUNDREL\\SCOUNDREL\\GameScripts\\InputController.cs",
+              "RelativeDocumentMoniker": "SCOUNDREL\\GameScripts\\InputController.cs",
+              "ToolTip": "D:\\UNITY\\GitHub Projects\\SCOUNDREL\\SCOUNDREL\\GameScripts\\InputController.cs",
+              "RelativeToolTip": "SCOUNDREL\\GameScripts\\InputController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-06T00:51:52.841Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Dungeon.cs",
+              "DocumentMoniker": "D:\\UNITY\\GitHub Projects\\SCOUNDREL\\SCOUNDREL\\GameScripts\\Dungeon.cs",
+              "RelativeDocumentMoniker": "SCOUNDREL\\GameScripts\\Dungeon.cs",
+              "ToolTip": "D:\\UNITY\\GitHub Projects\\SCOUNDREL\\SCOUNDREL\\GameScripts\\Dungeon.cs",
+              "RelativeToolTip": "SCOUNDREL\\GameScripts\\Dungeon.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-06T00:51:50.443Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Deck.cs",
+              "DocumentMoniker": "D:\\UNITY\\GitHub Projects\\SCOUNDREL\\SCOUNDREL\\Cards\\Deck.cs",
+              "RelativeDocumentMoniker": "SCOUNDREL\\Cards\\Deck.cs",
+              "ToolTip": "D:\\UNITY\\GitHub Projects\\SCOUNDREL\\SCOUNDREL\\Cards\\Deck.cs",
+              "RelativeToolTip": "SCOUNDREL\\Cards\\Deck.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-06T00:51:46.42Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Credits.cs",
+              "DocumentMoniker": "D:\\UNITY\\GitHub Projects\\SCOUNDREL\\SCOUNDREL\\Menu\\Credits.cs",
+              "RelativeDocumentMoniker": "SCOUNDREL\\Menu\\Credits.cs",
+              "ToolTip": "D:\\UNITY\\GitHub Projects\\SCOUNDREL\\SCOUNDREL\\Menu\\Credits.cs",
+              "RelativeToolTip": "SCOUNDREL\\Menu\\Credits.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-06T00:41:33.976Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainMenu.cs",
+              "DocumentMoniker": "D:\\UNITY\\GitHub Projects\\SCOUNDREL\\SCOUNDREL\\Menu\\MainMenu.cs",
+              "RelativeDocumentMoniker": "SCOUNDREL\\Menu\\MainMenu.cs",
+              "ToolTip": "D:\\UNITY\\GitHub Projects\\SCOUNDREL\\SCOUNDREL\\Menu\\MainMenu.cs",
+              "RelativeToolTip": "SCOUNDREL\\Menu\\MainMenu.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAgwCQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-06T00:24:16.636Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Rules.cs",
+              "DocumentMoniker": "D:\\UNITY\\GitHub Projects\\SCOUNDREL\\SCOUNDREL\\Menu\\Rules.cs",
+              "RelativeDocumentMoniker": "SCOUNDREL\\Menu\\Rules.cs",
+              "ToolTip": "D:\\UNITY\\GitHub Projects\\SCOUNDREL\\SCOUNDREL\\Menu\\Rules.cs",
+              "RelativeToolTip": "SCOUNDREL\\Menu\\Rules.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-06T00:24:02.814Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Card.cs",
+              "DocumentMoniker": "D:\\UNITY\\GitHub Projects\\SCOUNDREL\\SCOUNDREL\\Cards\\Card.cs",
+              "RelativeDocumentMoniker": "SCOUNDREL\\Cards\\Card.cs",
+              "ToolTip": "D:\\UNITY\\GitHub Projects\\SCOUNDREL\\SCOUNDREL\\Cards\\Card.cs",
+              "RelativeToolTip": "SCOUNDREL\\Cards\\Card.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-06T00:18:39.791Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MainProgram.cs",
+              "DocumentMoniker": "D:\\UNITY\\GitHub Projects\\SCOUNDREL\\SCOUNDREL\\GameScripts\\MainProgram.cs",
+              "RelativeDocumentMoniker": "SCOUNDREL\\GameScripts\\MainProgram.cs",
+              "ToolTip": "D:\\UNITY\\GitHub Projects\\SCOUNDREL\\SCOUNDREL\\GameScripts\\MainProgram.cs",
+              "RelativeToolTip": "SCOUNDREL\\GameScripts\\MainProgram.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-06T00:17:41.832Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Game.cs",
+              "DocumentMoniker": "D:\\UNITY\\GitHub Projects\\SCOUNDREL\\SCOUNDREL\\GameScripts\\Game.cs",
+              "RelativeDocumentMoniker": "SCOUNDREL\\GameScripts\\Game.cs",
+              "ToolTip": "D:\\UNITY\\GitHub Projects\\SCOUNDREL\\SCOUNDREL\\GameScripts\\Game.cs",
+              "RelativeToolTip": "SCOUNDREL\\GameScripts\\Game.cs",
+              "ViewState": "AgIAAEAAAAAAAAAAAAAmwGYAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-06T00:17:33.962Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
