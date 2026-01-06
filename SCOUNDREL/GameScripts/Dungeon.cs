@@ -12,9 +12,17 @@ public class Dungeon
 
     public void DrawNewRoom()
     {
+        int roomCount = 4;             // good candidate for optional rule
+
+
         CurrentRoom.Clear();
-        for (int i = 0; i < 4; i++)
-            CurrentRoom.Add(deck.Draw());
+
+
+        for (int i = 0; i < roomCount; i++)
+        {
+            if (deck.GetCardCount() > 0)
+                CurrentRoom.Add(deck.Draw());
+        }
     }
 
     public void DrawNextRoom()

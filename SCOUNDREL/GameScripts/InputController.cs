@@ -7,6 +7,7 @@ public class InputController
         Console.WriteLine("ACTIONS");
         Console.WriteLine();
         Console.WriteLine("  [F]   FIGHT");
+        
         Console.WriteLine("  [R]   RUN");
         Console.WriteLine("  [Q]   QUIT");
         Console.WriteLine();

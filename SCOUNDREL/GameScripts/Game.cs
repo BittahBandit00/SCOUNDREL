@@ -69,6 +69,12 @@ public class Game
 
         if (action == "run" || action == "r")                   // OPTIONAL RULE -> INCREASE SKIP COUNT TO 2
         {
+            if (deck.GetCardCount() == 0)
+            {
+                Console.WriteLine("No more cards in the deck.");
+                return;
+            }
+
             dungeon.SkipRoom();
             hasHealed = false;
             enteringRoom = true;
