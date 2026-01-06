@@ -1,4 +1,4 @@
-HOW TO PLAY
+HOW TO OPEN GAME
 
 1. Open Folder
 2. Open Build Folder
