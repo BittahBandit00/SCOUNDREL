@@ -3,7 +3,7 @@
   "WorkspaceRootPath": "D:\\UNITY\\GitHub Projects\\SCOUNDREL\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|D:\\UNITY\\GitHub Projects\\SCOUNDREL\\scoundrel\\cards\\deck.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|d:\\unity\\github projects\\scoundrel\\scoundrel\\cards\\deck.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|solutionrelative:scoundrel\\cards\\deck.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -48,9 +48,6 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|SCOUNDREL||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|d:\\unity\\github projects\\scoundrel\\scoundrel\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|6185191f-1008-4fb2-a715-3a4e4f27e610"
     }
   ],
   "DocumentGroupContainers": [
@@ -71,8 +68,7 @@
               "ToolTip": "D:\\UNITY\\GitHub Projects\\SCOUNDREL\\SCOUNDREL\\SCOUNDREL.csproj",
               "RelativeToolTip": "SCOUNDREL\\SCOUNDREL.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-01-06T07:41:19.048Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-06T07:41:19.048Z"
             },
             {
               "$type": "Document",
@@ -84,8 +80,7 @@
               "RelativeToolTip": "SCOUNDREL\\GameScripts\\Renderer.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAADsAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-06T00:52:10.263Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-06T00:52:10.263Z"
             },
             {
               "$type": "Document",
@@ -97,8 +92,7 @@
               "RelativeToolTip": "SCOUNDREL\\GameScripts\\Health.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-06T00:43:21.548Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-06T00:43:21.548Z"
             },
             {
               "$type": "Document",
@@ -110,8 +104,7 @@
               "RelativeToolTip": "SCOUNDREL\\GameScripts\\InputController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-06T00:51:52.841Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-06T00:51:52.841Z"
             },
             {
               "$type": "Document",
@@ -123,8 +116,7 @@
               "RelativeToolTip": "SCOUNDREL\\GameScripts\\Dungeon.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-06T00:51:50.443Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-06T00:51:50.443Z"
             },
             {
               "$type": "Document",
@@ -149,8 +141,7 @@
               "RelativeToolTip": "SCOUNDREL\\Menu\\Credits.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-06T00:41:33.976Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-06T00:41:33.976Z"
             },
             {
               "$type": "Document",
@@ -162,8 +153,7 @@
               "RelativeToolTip": "SCOUNDREL\\Menu\\MainMenu.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACwAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-06T00:24:16.636Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-06T00:24:16.636Z"
             },
             {
               "$type": "Document",
@@ -175,8 +165,7 @@
               "RelativeToolTip": "SCOUNDREL\\Menu\\Rules.cs",
               "ViewState": "AgIAADwAAAAAAAAAAAAowFwAAABIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-06T00:24:02.814Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-06T00:24:02.814Z"
             },
             {
               "$type": "Document",
@@ -188,8 +177,7 @@
               "RelativeToolTip": "SCOUNDREL\\Cards\\Card.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-06T00:18:39.791Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-06T00:18:39.791Z"
             },
             {
               "$type": "Document",
@@ -201,8 +189,7 @@
               "RelativeToolTip": "SCOUNDREL\\GameScripts\\MainProgram.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-06T00:17:41.832Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-06T00:17:41.832Z"
             },
             {
               "$type": "Document",
@@ -214,8 +201,7 @@
               "RelativeToolTip": "SCOUNDREL\\GameScripts\\Game.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAALUAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-06T00:17:33.962Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-06T00:17:33.962Z"
             }
           ]
         }
