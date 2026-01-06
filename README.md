@@ -4,9 +4,7 @@ HOW TO PLAY
 2. Open Build Folder
 3. Open SCOUNDREL (19KB) of type Application
 
-==============================================================================
 HOW TO PLAY
-==============================================================================
 
 Welcome to SCOUNDREL — a fast, brutal, card-driven dungeon crawl.
 Your goal is simple: survive the deck and outlast the dungeon.
