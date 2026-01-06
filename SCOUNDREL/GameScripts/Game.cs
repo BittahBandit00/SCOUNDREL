@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,6 +13,7 @@ public class Game
     private Dungeon dungeon;
     private Renderer renderer = new Renderer();
     private InputController input = new InputController();
+    private MainMenu mainMenu = new MainMenu();
 
     private List<Card> weapon = new List<Card>();
 
@@ -71,6 +73,11 @@ public class Game
             hasHealed = false;
             enteringRoom = true;
             return;
+        }
+
+        if (action == "q")                 
+        {
+            mainMenu.Show();    
         }
 
         Console.WriteLine("Unknown action.");

@@ -8,6 +8,7 @@ public class InputController
         Console.WriteLine();
         Console.WriteLine("  [F]   FIGHT");
         Console.WriteLine("  [R]   RUN");
+        Console.WriteLine("  [Q]   QUIT");
         Console.WriteLine();
         Console.Write(">> ");
         return Console.ReadLine().Trim().ToLower();
