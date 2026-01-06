@@ -10,9 +10,10 @@ public class Renderer
     {
         Console.Clear();
 
-        Console.WriteLine("==============================================");
-        Console.WriteLine("                 D U N G E O N               ");
-        Console.WriteLine("==============================================");
+        Console.WriteLine("===============================================");
+        Console.WriteLine("                 D U N G E O N                 ");
+        Console.WriteLine("===============================================");
+        Console.WriteLine("cards left: 00                                 ");
         Console.WriteLine();
 
         for (int i = 0; i < room.Count; i++)
@@ -24,10 +25,10 @@ public class Renderer
 
         Console.WriteLine();
         Console.WriteLine();
-        Console.WriteLine("----------------------------------------------");
+        Console.WriteLine("-----------------------------------------------");
         Console.WriteLine($" HEALTH: {health}");
         PrintWeapon(weapon);
-        Console.WriteLine("----------------------------------------------");
+        Console.WriteLine("-----------------------------------------------");
         Console.WriteLine();
 
     }
@@ -89,6 +90,7 @@ public class Renderer
     }
 
     public void PrintDefeat()
+
     {
         Console.Clear();
 

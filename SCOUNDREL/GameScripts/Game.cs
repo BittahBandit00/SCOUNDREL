@@ -38,8 +38,15 @@ public class Game
 
             if (enteringRoom)
             {
-                HandleAction();
-                enteringRoom = false;
+                Console.WriteLine("ACTIONS");
+                Console.WriteLine();
+                Console.WriteLine("  [F]   FIGHT");
+                Console.WriteLine("  [R]   RUN");
+                Console.WriteLine("  [Q]   QUIT");
+                Console.WriteLine();
+                Console.Write(">> ");
+                if (HandleAction())
+                    enteringRoom = false;
             }
             else
             {
@@ -60,36 +67,44 @@ public class Game
         }
     }
 
-    private void HandleAction()
+    private bool HandleAction()
     {
-        string action = input.GetAction();
-
-        if (action == "fight" || action == "f")
-            return;
-
-        if (action == "run" || action == "r")                   // OPTIONAL RULE -> INCREASE SKIP COUNT TO 2
+        while (true)
         {
-            if (deck.GetCardCount() == 0)
+            string action = input.GetAction();
+
+            if (string.IsNullOrWhiteSpace(action))
+                continue; // do nothing, stay in this method
+
+            action = action.ToLower();
+
+            if (action == "f" || action == "fight")
+                return true;
+
+            if (action == "r" || action == "run")
             {
-                Console.WriteLine("No more cards in the deck.");
-                return;
+                if (deck.GetCardCount() == 0)
+                    continue; // invalid, stay here
+
+                dungeon.SkipRoom();
+                hasHealed = false;
+                enteringRoom = true;
+                return true;
             }
 
-            dungeon.SkipRoom();
-            hasHealed = false;
-            enteringRoom = true;
-            return;
-        }
+            if (action == "q")
+            {
+                mainMenu.Show();
+                return true;
+            }
 
-        if (action == "q")                 
-        {
-            mainMenu.Show();    
+            // invalid input: do nothing
         }
-
-        Console.WriteLine("Unknown action.");
     }
 
-    private void HandleCardSelection()
+
+
+private void HandleCardSelection()
     {
         string raw = input.GetCardSelection(dungeon.CurrentRoom.Count);
 
