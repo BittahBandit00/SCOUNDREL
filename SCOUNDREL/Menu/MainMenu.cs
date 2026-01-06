@@ -44,12 +44,6 @@ public class MainMenu
                     Credits.Show();
                     continue;
 
-                case "o":
-                    Console.WriteLine("\nOptional rules are not implemented yet.");
-                    Console.WriteLine("Press Enter to return to the menu...");
-                    Console.ReadLine();
-                    continue;
-
                 case "d": // DEBUG ONLY
                     Renderer r = new Renderer();
                     r.PrintWin();
