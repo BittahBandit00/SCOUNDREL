@@ -1,7 +1,0 @@
-D:\UNITY\GitHub Projects\SCOUNDREL\SCOUNDREL\bin\Release\SCOUNDREL.exe.config
-D:\UNITY\GitHub Projects\SCOUNDREL\SCOUNDREL\bin\Release\SCOUNDREL.exe
-D:\UNITY\GitHub Projects\SCOUNDREL\SCOUNDREL\bin\Release\SCOUNDREL.pdb
-D:\UNITY\GitHub Projects\SCOUNDREL\SCOUNDREL\obj\Release\SCOUNDREL.csproj.AssemblyReference.cache
-D:\UNITY\GitHub Projects\SCOUNDREL\SCOUNDREL\obj\Release\SCOUNDREL.csproj.CoreCompileInputs.cache
-D:\UNITY\GitHub Projects\SCOUNDREL\SCOUNDREL\obj\Release\SCOUNDREL.exe
-D:\UNITY\GitHub Projects\SCOUNDREL\SCOUNDREL\obj\Release\SCOUNDREL.pdb
