@@ -46,7 +46,7 @@ public class Game
                 HandleCardSelection();
             }
 
-            if (deck.GetCardCount() == 0 && dungeon.CurrentRoom.Count == 0)
+            if (deck.GetCardCount() == 0 && dungeon.CurrentRoom.Count == 0 && health.GetHealth() > 0)
             {
                 renderer.PrintWin();
                 return;
