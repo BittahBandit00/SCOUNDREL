@@ -91,8 +91,8 @@ public static class Rules
         Console.WriteLine("      • Fist attacks never change or replace your weapon.");
         Console.WriteLine();
         Console.WriteLine("  RUN");
-        Console.WriteLine("      • Sends the chosen enemy to the *bottom* of the deck.");
-        Console.WriteLine("      • Cannot be used twice in a row — no coward loops.");
+        Console.WriteLine("      • Sends all 4 cards to the *bottom* of the deck.");
+        Console.WriteLine("      • Cannot be used twice in a row - no coward loops.");
         Console.WriteLine();
 
         Console.WriteLine("------------------------------------------------------------------------------");
