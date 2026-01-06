@@ -5,6 +5,7 @@ HOW TO OPEN GAME
 3. Run SCOUNDREL (19KB, Application)
 
 HOW TO PLAY
+
 Welcome to SCOUNDREL - a fast, brutal, card-driven dungeon crawl.
 Your goal is simple: survive the deck and outlast the dungeon.
 
@@ -12,6 +13,7 @@ The deck is the dungeon. Every card you draw is a room containing an enemy,
 a weapon, or a potion. You begin with 20 Health. If it reaches zero, your run ends.
 
 ROOM STRUCTURE
+
 Each turn, you reveal the top four cards of the deck. Choose one to resolve;
 the others remain until the room is cleared. When only one card remains,
 three new cards are drawn to refill the room.
