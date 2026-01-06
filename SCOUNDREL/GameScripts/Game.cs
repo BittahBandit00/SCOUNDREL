@@ -183,7 +183,7 @@ public class Game
                 ResolveHeart(card);
                 break;
 
-            case "◇":
+            case "♦":
                 ResolveDiamond(card);
                 break;
 

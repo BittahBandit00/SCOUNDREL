@@ -47,7 +47,7 @@ public static class Rules
 
         // ===================== WEAPONS =====================
         Console.Write("  WEAPONS   ");
-        WriteColored("◇", ConsoleColor.Red);
+        WriteColored("♦", ConsoleColor.Red);
         Console.WriteLine();
         Console.WriteLine("      • Picking up a weapon replaces your current one immediately.");
         Console.WriteLine("      • Defeating an enemy sets your weapon's durability to its value.");
@@ -90,7 +90,7 @@ public static class Rules
         Console.WriteLine(" OBJECTIVE");
         Console.WriteLine("------------------------------------------------------------------------------");
         Console.WriteLine("Clear the entire deck without dying. Every room is a gamble,");
-        Console.WriteLine("every choice a wager, and every victory hard‑earned.");
+        Console.WriteLine("every choice a wager, and every victory hard-earned.");
         Console.WriteLine();
         Console.WriteLine("Good luck, Scoundrel.");
         Console.WriteLine();

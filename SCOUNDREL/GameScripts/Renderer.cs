@@ -59,7 +59,7 @@ public class Renderer
     {
         var original = Console.ForegroundColor;
 
-        if (card.Suit == "♥" || card.Suit == "◇")
+        if (card.Suit == "♥" || card.Suit == "♦")
             Console.ForegroundColor = ConsoleColor.Red;
         else
             Console.ForegroundColor = ConsoleColor.DarkCyan;
