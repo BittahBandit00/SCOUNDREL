@@ -27,11 +27,16 @@ public static class Rules
         Console.WriteLine("------------------------------------------------------------------------------");
         Console.WriteLine(" ROOM STRUCTURE");
         Console.WriteLine("------------------------------------------------------------------------------");
-        Console.WriteLine("Each turn, you reveal the top 4 cards of the deck. You must choose");
-        Console.WriteLine("one to resolve. The others remain until the room is cleared.");
-        Console.WriteLine("When only one card remains, three more cards are drawn to refill.");
+        Console.WriteLine("Each turn, you reveal the top four cards of the deck. Choose one to resolve;");
+        Console.WriteLine("the others remain until the room is cleared. When only one card remains,");
+        Console.WriteLine("three new cards are drawn to refill the room.");
         Console.WriteLine();
-
+        Console.WriteLine("Card values:");
+        Console.WriteLine("  J = 11");
+        Console.WriteLine("  Q = 12");
+        Console.WriteLine("  K = 13");
+        Console.WriteLine("  A = 14");
+        Console.WriteLine();
         // ===================== ENEMIES =====================
         Console.Write("  ENEMIES   ");
         WriteColored("♣", ConsoleColor.DarkCyan);
@@ -63,6 +68,7 @@ public static class Rules
         Console.WriteLine();
         Console.WriteLine("      • Potions heal you for their value when selected.");
         Console.WriteLine("      • You may drink ONE potion per room — choose wisely.");
+        Console.WriteLine("      • Healing cannot exceed your maximum health - extra healing is lost.");
         Console.WriteLine("      • Drinking additional potions in the same room wastes them.");
         Console.WriteLine();
 
@@ -77,7 +83,10 @@ public static class Rules
         Console.WriteLine("  FIGHT");
         Console.WriteLine("      • Select a card (1–4) and resolve its effect immediately.");
         Console.WriteLine("      • Add 'B' or 'F' to your choice to fight with your fists.");
-        Console.WriteLine("        Example:  '2B'  fights card 2 using your fists.");
+        Console.WriteLine("        Example: '2B' fights card 2 using your fists.");
+        Console.WriteLine("      • Defeating an enemy with a red weapon reduces its durability.");
+        Console.WriteLine("      • A weapon with reduced durability can only block enemies");
+        Console.WriteLine("        whose value is lower than its current durability.");
         Console.WriteLine("      • Fist attacks ignore your weapon and deal full damage.");
         Console.WriteLine("      • Fist attacks never change or replace your weapon.");
         Console.WriteLine();
@@ -89,12 +98,14 @@ public static class Rules
         Console.WriteLine("------------------------------------------------------------------------------");
         Console.WriteLine(" OBJECTIVE");
         Console.WriteLine("------------------------------------------------------------------------------");
+        Console.WriteLine("You win when the deck is empty and the final room is cleared.");
         Console.WriteLine("Clear the entire deck without dying. Every room is a gamble,");
         Console.WriteLine("every choice a wager, and every victory hard-earned.");
         Console.WriteLine();
         Console.WriteLine("Good luck, Scoundrel.");
         Console.WriteLine();
         Console.WriteLine("Press Enter to return to the menu...");
+        Console.WriteLine("Tip: Scroll up if you missed anything.");
         Console.ReadLine();
     }
 }
