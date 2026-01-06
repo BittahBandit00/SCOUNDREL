@@ -45,7 +45,6 @@
   <ItemGroup>
     <Compile Include="Cards\Card.cs" />
     <Compile Include="Cards\Deck.cs" />
-    <Compile Include="GameScripts\OptionalRules.cs" />
     <Compile Include="Menu\Credits.cs" />
     <Compile Include="GameScripts\Dungeon.cs" />
     <Compile Include="GameScripts\Game.cs" />

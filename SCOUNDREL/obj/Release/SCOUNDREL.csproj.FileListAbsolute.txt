@@ -1,0 +1,7 @@
+C:\Users\ayeay\Documents\Unity Projects\GitHub\SCOUNDREL\SCOUNDREL\bin\Release\SCOUNDREL.exe.config
+C:\Users\ayeay\Documents\Unity Projects\GitHub\SCOUNDREL\SCOUNDREL\bin\Release\SCOUNDREL.exe
+C:\Users\ayeay\Documents\Unity Projects\GitHub\SCOUNDREL\SCOUNDREL\bin\Release\SCOUNDREL.pdb
+C:\Users\ayeay\Documents\Unity Projects\GitHub\SCOUNDREL\SCOUNDREL\obj\Release\SCOUNDREL.csproj.AssemblyReference.cache
+C:\Users\ayeay\Documents\Unity Projects\GitHub\SCOUNDREL\SCOUNDREL\obj\Release\SCOUNDREL.csproj.CoreCompileInputs.cache
+C:\Users\ayeay\Documents\Unity Projects\GitHub\SCOUNDREL\SCOUNDREL\obj\Release\SCOUNDREL.exe
+C:\Users\ayeay\Documents\Unity Projects\GitHub\SCOUNDREL\SCOUNDREL\obj\Release\SCOUNDREL.pdb
