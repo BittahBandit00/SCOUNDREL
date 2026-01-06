@@ -3,7 +3,7 @@
   "WorkspaceRootPath": "C:\\Users\\ayeay\\Documents\\Unity Projects\\GitHub\\SCOUNDREL\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|C:\\Users\\ayeay\\Documents\\Unity Projects\\GitHub\\SCOUNDREL\\scoundrel\\gamescripts\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|c:\\users\\ayeay\\documents\\unity projects\\github\\scoundrel\\scoundrel\\gamescripts\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|solutionrelative:scoundrel\\gamescripts\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -11,20 +11,24 @@
       "RelativeMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|solutionrelative:scoundrel\\gamescripts\\inputcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|C:\\Users\\ayeay\\Documents\\Unity Projects\\GitHub\\SCOUNDREL\\scoundrel\\cards\\deck.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|solutionrelative:scoundrel\\cards\\deck.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|C:\\Users\\ayeay\\Documents\\Unity Projects\\GitHub\\SCOUNDREL\\scoundrel\\menu\\rules.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|solutionrelative:scoundrel\\menu\\rules.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|C:\\Users\\ayeay\\Documents\\Unity Projects\\GitHub\\SCOUNDREL\\scoundrel\\gamescripts\\renderer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|solutionrelative:scoundrel\\gamescripts\\renderer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|c:\\users\\ayeay\\documents\\unity projects\\github\\scoundrel\\scoundrel\\optionalrules\\ideas.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "AbsoluteMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|C:\\Users\\ayeay\\Documents\\Unity Projects\\GitHub\\SCOUNDREL\\scoundrel\\optionalrules\\ideas.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|solutionrelative:scoundrel\\optionalrules\\ideas.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|C:\\Users\\ayeay\\Documents\\Unity Projects\\GitHub\\SCOUNDREL\\scoundrel\\gamescripts\\mainprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|solutionrelative:scoundrel\\gamescripts\\mainprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|c:\\users\\ayeay\\documents\\unity projects\\github\\scoundrel\\scoundrel\\menu\\rules.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|solutionrelative:scoundrel\\menu\\rules.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|C:\\Users\\ayeay\\Documents\\Unity Projects\\GitHub\\SCOUNDREL\\scoundrel\\gamescripts\\dungeon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -41,10 +45,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|C:\\Users\\ayeay\\Documents\\Unity Projects\\GitHub\\SCOUNDREL\\scoundrel\\menu\\credits.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|solutionrelative:scoundrel\\menu\\credits.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|C:\\Users\\ayeay\\Documents\\Unity Projects\\GitHub\\SCOUNDREL\\scoundrel\\cards\\deck.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|solutionrelative:scoundrel\\cards\\deck.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DF0BC51C-16F6-436B-A1AD-65EA186825EE}|SCOUNDREL\\SCOUNDREL.csproj|C:\\Users\\ayeay\\Documents\\Unity Projects\\GitHub\\SCOUNDREL\\scoundrel\\cards\\card.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -68,7 +68,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Renderer.cs",
               "DocumentMoniker": "C:\\Users\\ayeay\\Documents\\Unity Projects\\GitHub\\SCOUNDREL\\SCOUNDREL\\GameScripts\\Renderer.cs",
               "RelativeDocumentMoniker": "SCOUNDREL\\GameScripts\\Renderer.cs",
@@ -76,8 +76,7 @@
               "RelativeToolTip": "SCOUNDREL\\GameScripts\\Renderer.cs",
               "ViewState": "AgIAAAoAAAAAAAAAAAAQwBsAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-06T00:52:10.263Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-06T00:52:10.263Z"
             },
             {
               "$type": "Document",
@@ -87,14 +86,14 @@
               "RelativeDocumentMoniker": "SCOUNDREL\\GameScripts\\InputController.cs",
               "ToolTip": "C:\\Users\\ayeay\\Documents\\Unity Projects\\GitHub\\SCOUNDREL\\SCOUNDREL\\GameScripts\\InputController.cs",
               "RelativeToolTip": "SCOUNDREL\\GameScripts\\InputController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-06T00:51:52.841Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Dungeon.cs",
               "DocumentMoniker": "C:\\Users\\ayeay\\Documents\\Unity Projects\\GitHub\\SCOUNDREL\\SCOUNDREL\\GameScripts\\Dungeon.cs",
               "RelativeDocumentMoniker": "SCOUNDREL\\GameScripts\\Dungeon.cs",
@@ -106,7 +105,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 2,
               "Title": "Deck.cs",
               "DocumentMoniker": "C:\\Users\\ayeay\\Documents\\Unity Projects\\GitHub\\SCOUNDREL\\SCOUNDREL\\Cards\\Deck.cs",
               "RelativeDocumentMoniker": "SCOUNDREL\\Cards\\Deck.cs",
@@ -114,11 +113,12 @@
               "RelativeToolTip": "SCOUNDREL\\Cards\\Deck.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-06T00:51:46.42Z"
+              "WhenOpened": "2026-01-06T00:51:46.42Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "Rules.cs",
               "DocumentMoniker": "C:\\Users\\ayeay\\Documents\\Unity Projects\\GitHub\\SCOUNDREL\\SCOUNDREL\\Menu\\Rules.cs",
               "RelativeDocumentMoniker": "SCOUNDREL\\Menu\\Rules.cs",
@@ -137,14 +137,14 @@
               "RelativeDocumentMoniker": "SCOUNDREL\\GameScripts\\Game.cs",
               "ToolTip": "C:\\Users\\ayeay\\Documents\\Unity Projects\\GitHub\\SCOUNDREL\\SCOUNDREL\\GameScripts\\Game.cs",
               "RelativeToolTip": "SCOUNDREL\\GameScripts\\Game.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAqwC4AAAAlAAAAAAAAAA==",
+              "ViewState": "AgIAAFUAAAAAAAAAAAAswGwAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-06T00:17:33.962Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "ideas.txt",
               "DocumentMoniker": "C:\\Users\\ayeay\\Documents\\Unity Projects\\GitHub\\SCOUNDREL\\SCOUNDREL\\OptionalRules\\ideas.txt",
               "RelativeDocumentMoniker": "SCOUNDREL\\OptionalRules\\ideas.txt",
@@ -152,8 +152,7 @@
               "RelativeToolTip": "SCOUNDREL\\OptionalRules\\ideas.txt",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2026-01-06T23:02:51.706Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-06T23:02:51.706Z"
             },
             {
               "$type": "Document",
@@ -168,7 +167,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "Credits.cs",
               "DocumentMoniker": "C:\\Users\\ayeay\\Documents\\Unity Projects\\GitHub\\SCOUNDREL\\SCOUNDREL\\Menu\\Credits.cs",
               "RelativeDocumentMoniker": "SCOUNDREL\\Menu\\Credits.cs",
@@ -180,7 +179,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "MainProgram.cs",
               "DocumentMoniker": "C:\\Users\\ayeay\\Documents\\Unity Projects\\GitHub\\SCOUNDREL\\SCOUNDREL\\GameScripts\\MainProgram.cs",
               "RelativeDocumentMoniker": "SCOUNDREL\\GameScripts\\MainProgram.cs",
@@ -188,12 +187,11 @@
               "RelativeToolTip": "SCOUNDREL\\GameScripts\\MainProgram.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-06T00:17:41.832Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-06T00:17:41.832Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "Health.cs",
               "DocumentMoniker": "C:\\Users\\ayeay\\Documents\\Unity Projects\\GitHub\\SCOUNDREL\\SCOUNDREL\\GameScripts\\Health.cs",
               "RelativeDocumentMoniker": "SCOUNDREL\\GameScripts\\Health.cs",
@@ -215,7 +213,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "MainMenu.cs",
               "DocumentMoniker": "C:\\Users\\ayeay\\Documents\\Unity Projects\\GitHub\\SCOUNDREL\\SCOUNDREL\\Menu\\MainMenu.cs",
               "RelativeDocumentMoniker": "SCOUNDREL\\Menu\\MainMenu.cs",

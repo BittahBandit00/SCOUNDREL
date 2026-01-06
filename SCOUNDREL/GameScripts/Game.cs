@@ -74,7 +74,11 @@ public class Game
             string action = input.GetAction();
 
             if (string.IsNullOrWhiteSpace(action))
-                continue; // do nothing, stay in this method
+            {
+                ClearInputLine();
+                Console.Write(">> ");
+                continue;
+            }
 
             action = action.ToLower();
 
@@ -84,7 +88,11 @@ public class Game
             if (action == "r" || action == "run")
             {
                 if (deck.GetCardCount() == 0)
-                    continue; // invalid, stay here
+                {
+                    ClearInputLine();
+                    Console.Write(">> ");
+                    continue;
+                }
 
                 dungeon.SkipRoom();
                 hasHealed = false;
@@ -98,13 +106,16 @@ public class Game
                 return true;
             }
 
-            // invalid input: do nothing
+            // invalid input: clear and reprompt
+            ClearInputLine();
+            Console.Write(">> ");
         }
     }
 
 
 
-private void HandleCardSelection()
+
+    private void HandleCardSelection()
     {
         string raw = input.GetCardSelection(dungeon.CurrentRoom.Count);
 
@@ -221,6 +232,15 @@ private void HandleCardSelection()
                 break;
         }
     }
+
+    private void ClearInputLine()
+    {
+        int line = Console.CursorTop - 1;
+        Console.SetCursorPosition(0, line);
+        Console.Write(new string(' ', Console.WindowWidth));
+        Console.SetCursorPosition(0, line);
+    }
+
 
 }
 
