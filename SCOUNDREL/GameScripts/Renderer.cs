@@ -6,13 +6,20 @@ using System.Collections.Generic;
 public class Renderer
 {
 
-    public void PrintRoom(List<Card> room, int health, List<Card> weapon)
+    public void PrintRoom(List<Card> room, int health, List<Card> weapon, int deckCount, int skips, bool showCardsRemaining)
     {
         Console.Clear();
 
-        Console.WriteLine("==============================================");
-        Console.WriteLine("                 D U N G E O N               ");
-        Console.WriteLine("==============================================");
+        Console.WriteLine("===============================================");
+        Console.WriteLine("                 D U N G E O N                 ");
+        Console.WriteLine("===============================================");
+
+        if (showCardsRemaining)
+        {
+            Console.WriteLine();
+            Console.WriteLine($"ENCOUNTERS:" + deckCount);
+
+        }
         Console.WriteLine();
 
         for (int i = 0; i < room.Count; i++)
@@ -24,10 +31,11 @@ public class Renderer
 
         Console.WriteLine();
         Console.WriteLine();
-        Console.WriteLine("----------------------------------------------");
+        Console.WriteLine("-----------------------------------------------");
         Console.WriteLine($" HEALTH: {health}");
         PrintWeapon(weapon);
-        Console.WriteLine("----------------------------------------------");
+        Console.WriteLine($" ESCAPES LEFT : {skips}");
+        Console.WriteLine("-----------------------------------------------");
         Console.WriteLine();
 
     }
@@ -41,18 +49,31 @@ public class Renderer
             return;
         }
 
+        // Active durability card (last)
         Console.Write(" WEAPON: ");
+        PrintCard(weapon[weapon.Count - 1]);
+
+        // If only one card, we're done
+        if (weapon.Count == 1)
+        {
+            Console.WriteLine();
+            return;
+        }
+
+        // Print chain: first -> ... -> last
+        Console.Write(" (");
 
         for (int i = 0; i < weapon.Count; i++)
         {
             PrintCard(weapon[i]);
-
             if (i < weapon.Count - 1)
-                Console.Write(", "); // separator between cards
+                Console.Write(" > ");
         }
 
-        Console.WriteLine();
+        Console.WriteLine(")");
     }
+
+
 
 
     public void PrintCard(Card card)
@@ -89,6 +110,7 @@ public class Renderer
     }
 
     public void PrintDefeat()
+
     {
         Console.Clear();
 

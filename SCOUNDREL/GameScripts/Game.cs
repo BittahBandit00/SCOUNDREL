@@ -8,38 +8,76 @@ using System.Threading.Tasks;
 
 public class Game
 {
+    private Dungeon dungeon;
+    private OptionalRules optionalRules;
+    private Renderer renderer = new Renderer();
+    private MainMenu mainMenu;
+    
     private Deck deck = new Deck();
     private Health health = new Health();
-    private Dungeon dungeon;
-    private Renderer renderer = new Renderer();
     private InputController input = new InputController();
-    private MainMenu mainMenu = new MainMenu();
 
     private List<Card> weapon = new List<Card>();
-
 
     public bool enteringRoom = true;
     public bool hasHealed = false;
 
-    public Game()
+    //optional rules
+    private int escapeCount = 1;
+    private bool ShowCardsRemaining = false;
+    private int hp;
+    private bool infiniteHeals = false;
+    public Game(OptionalRules rules, MainMenu menu)
     {
-        deck.Shuffle();
+        optionalRules = rules;
+        mainMenu = menu;
         dungeon = new Dungeon(deck);
+       
+        InitialiseOptionalRules();
+        deck.Shuffle();
     }
 
-    public void Start()
+    private void InitialiseOptionalRules()
+    {
+        health.SetMaxHealth(optionalRules.ExtraHealth);
+        escapeCount = SetSkips();
+        ShowCardsRemaining = optionalRules.ShowEncountersLeft;
+        infiniteHeals = optionalRules.InfiniteHeals;
+
+        if (optionalRules.LowAces)
+        {
+            foreach (var card in deck.cards)
+                card.SetAcesToOne();
+        }
+
+
+    }
+
+    private int SetSkips()
+    {
+        return optionalRules.DoubleSkip ? 2 : 1;
+    }
+
+public void Start()
     {
         dungeon.DrawNewRoom();
 
         while (true)
         {
-            renderer.PrintRoom(dungeon.CurrentRoom, health.GetHealth(), weapon);
+            renderer.PrintRoom(dungeon.CurrentRoom, health.GetHealth(), weapon, deck.GetCardCount() + dungeon.CurrentRoom.Count, escapeCount, ShowCardsRemaining );
 
 
             if (enteringRoom)
             {
-                HandleAction();
-                enteringRoom = false;
+                Console.WriteLine("ACTIONS");
+                Console.WriteLine();
+                Console.WriteLine("  [F]   FIGHT");
+                Console.WriteLine("  [E]   ESCAPE");
+                Console.WriteLine("  [Q]   QUIT");
+                Console.WriteLine();
+                Console.Write(">> ");
+                if (HandleAction())
+                    enteringRoom = false;
             }
             else
             {
@@ -60,34 +98,58 @@ public class Game
         }
     }
 
-    private void HandleAction()
+    private bool HandleAction()
     {
-        string action = input.GetAction();
-
-        if (action == "fight" || action == "f")
-            return;
-
-        if (action == "run" || action == "r")                   // OPTIONAL RULE -> INCREASE SKIP COUNT TO 2
+        while (true)
         {
-            if (deck.GetCardCount() == 0)
+            string action = input.GetAction();
+
+            if (string.IsNullOrWhiteSpace(action))
             {
-                Console.WriteLine("No more cards in the deck.");
-                return;
+                ClearInputLine();
+                Console.Write(">> ");
+                continue;
             }
 
-            dungeon.SkipRoom();
-            hasHealed = false;
-            enteringRoom = true;
-            return;
-        }
+            action = action.ToLower();
 
-        if (action == "q")                 
-        {
-            mainMenu.Show();    
-        }
+            if (action == "f" || action == "fight")
+                return true;
 
-        Console.WriteLine("Unknown action.");
+            if (action == "e" || action == "escape")
+            {
+                if (deck.GetCardCount() == 0)
+                {
+                    ClearInputLine();
+                    Console.Write(">> ");
+                    continue;
+                }
+
+                if (escapeCount > 0)
+                {
+                    escapeCount--;
+                    dungeon.SkipRoom();
+                    hasHealed = false;
+                    enteringRoom = true;
+                    return false;
+                }
+            }
+
+
+            if (action == "q")
+            {
+                mainMenu.Show();
+                return true;
+            }
+
+            // invalid input: clear and reprompt
+            ClearInputLine();
+            Console.Write(">> ");
+        }
     }
+
+
+
 
     private void HandleCardSelection()
     {
@@ -127,6 +189,7 @@ public class Game
         {
             dungeon.DrawNextRoom();
             hasHealed = false;
+            escapeCount = SetSkips();
             enteringRoom = true;
         }
     }
@@ -135,7 +198,7 @@ public class Game
 
     private void ResolveHeart(Card card)            // OPTIONAL RULES CANDIDATE - HEAL AS MANY TIMES
     {
-        if (hasHealed)
+        if (hasHealed && !infiniteHeals)
             return;
 
         health.Heal(card.GetValue());
@@ -151,30 +214,33 @@ public class Game
 
     private void ResolveEnemy(Card card, bool useFists)
     {
-        int weaponValue = 0;
-
-        // If using weapon, get its value
-        if (!useFists && weapon.Count > 0)
-            weaponValue = weapon.Last().GetValue();
+        int weaponValue = (!useFists && weapon.Count > 0)
+            ? weapon.Last().GetValue()
+            : 0;
 
         int enemyValue = card.GetValue();
         int damage = 0;
 
-        // If weapon is an enemy card and too weak, it breaks → forced fists
-        if (!useFists && weapon.Count > 0 && (weapon.Last().Suit == "♣" || weapon.Last().Suit == "♠"))
+        bool isAltered = weapon.Count > 0 && (weapon.Last().Suit == "♣" || weapon.Last().Suit == "♠");
+        bool canMatch = optionalRules.AlteredWeaponCanMatch && isAltered;
+
+        // Determine if weapon breaks
+        if (!useFists && isAltered)
         {
-            if (enemyValue >= weaponValue)
+            bool weaponTooWeak =
+                canMatch ? enemyValue > weaponValue     // allow equal
+                         : enemyValue >= weaponValue;   // strict
+
+            if (weaponTooWeak)
             {
-                weaponValue = 0;
                 useFists = true;
+                weaponValue = 0;
             }
         }
 
-        // If you have no weapon at all → forced fists
         if (weapon.Count == 0)
             useFists = true;
 
-        // Damage calculation
         if (enemyValue > weaponValue)
             damage = enemyValue - weaponValue;
 
@@ -206,6 +272,15 @@ public class Game
                 break;
         }
     }
+
+    private void ClearInputLine()
+    {
+        int line = Console.CursorTop - 1;
+        Console.SetCursorPosition(0, line);
+        Console.Write(new string(' ', Console.WindowWidth));
+        Console.SetCursorPosition(0, line);
+    }
+
 
 }
 

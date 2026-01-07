@@ -62,7 +62,7 @@ public static class Rules
         Console.WriteLine("      • When you defeat an enemy using your weapon, its durability");
         Console.WriteLine("        becomes that enemy's value.");
         Console.WriteLine("      • After that, your weapon only protects you against enemies");
-        Console.WriteLine("        with a LOWER value than its current durability.");
+        Console.WriteLine("        with a MODIFIED value than its current durability.");
         Console.WriteLine("      • If you use your weapon against an enemy whose value is not lower,");
         Console.WriteLine("        it fails to protect you and you take full damage.");
         Console.WriteLine("      • Fist fights do not use or change your weapon's durability.");
@@ -96,7 +96,7 @@ public static class Rules
         Console.WriteLine("        than the enemy's value.");
         Console.WriteLine("      • Fist attacks ignore your weapon and always deal full damage.");
         Console.WriteLine();
-        Console.WriteLine("  RUN");
+        Console.WriteLine("  ESCAPE");
         Console.WriteLine("      • Sends all 4 cards to the *bottom* of the deck.");
         Console.WriteLine("      • Cannot be used twice in a row - no coward loops.");
         Console.WriteLine();

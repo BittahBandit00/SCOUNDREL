@@ -2,6 +2,18 @@
 
 public class MainMenu
 {
+    private OptionalRules optionalRules = new OptionalRules();
+    private InputController input = new InputController();
+    private OptionalRulesMenu optionalRulesMenu;
+    private int quiteDelay = 1000;
+    
+    public MainMenu()
+    {
+        optionalRulesMenu = new OptionalRulesMenu(optionalRules, input);
+    }
+
+
+
     public void Show()
     {
         while (true)
@@ -13,30 +25,33 @@ public class MainMenu
             Console.WriteLine("          Inspired by Zach Gage & Kurt Bieg          ");
             Console.WriteLine("=====================================================");
             Console.WriteLine();
-            Console.WriteLine("  [R]   Rules & How to Play");
             Console.WriteLine("  [S]   Start Game");
+            Console.WriteLine("  [R]   Rules & How to Play");
+            Console.WriteLine("  [O]   Optional Rules");
             Console.WriteLine("  [C]   Credits");
-            Console.WriteLine("  [O]   Optional Rules (WIP)");
             Console.WriteLine("  [Q]   Quit");
             Console.WriteLine();
             Console.Write("  >> ");
 
 
-            string input = Console.ReadLine().Trim().ToLower();
+            string choice = input.GetAction();
 
-            switch (input)
+
+            switch (choice)
             {
                 case "q":
-                    Console.WriteLine("\nSee you soon, Scoundrel. Exiting game...");
+                    Console.WriteLine("\nSee you soon, Scoundrel...");
+                    System.Threading.Thread.Sleep(quiteDelay);
                     Environment.Exit(0);
                     break;
+
 
                 case "r":
                     Rules.Show();
                     continue;
 
                 case "s":
-                    Game game = new Game();
+                    Game game = new Game(optionalRules, this);
                     game.Start();
                     continue;
 
@@ -44,9 +59,15 @@ public class MainMenu
                     Credits.Show();
                     continue;
 
+                case "o":
+                    optionalRulesMenu.Show();
+                    continue;
+
+
+
                 case "d": // DEBUG ONLY
-                    Renderer r = new Renderer();
-                    r.PrintWin();
+                    //Renderer r = new Renderer();
+                    //r.PrintWin();
                     continue;
 
 

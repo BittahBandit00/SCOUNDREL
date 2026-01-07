@@ -4,14 +4,6 @@ public class InputController
 {
     public string GetAction()
     {
-        Console.WriteLine("ACTIONS");
-        Console.WriteLine();
-        Console.WriteLine("  [F]   FIGHT");
-        
-        Console.WriteLine("  [R]   RUN");
-        Console.WriteLine("  [Q]   QUIT");
-        Console.WriteLine();
-        Console.Write(">> ");
         return Console.ReadLine().Trim().ToLower();
     }
 
