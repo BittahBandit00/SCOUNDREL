@@ -7,6 +7,13 @@ using System.Threading.Tasks;
 public class Health
 {
     private int HP = 20;
+    private int MaxHealth = 0;
+
+    public void SetMaxHealth(bool ExtraHealthRule)
+    {
+        MaxHealth = ExtraHealthRule ? 25 : 20;
+        HP = MaxHealth;
+    }
 
     public int GetHealth()
     {
@@ -18,9 +25,9 @@ public class Health
     {
         HP = HP+x;
         
-        if(HP > 20)
+        if(HP > MaxHealth)
         {
-            HP = 20; 
+            HP = MaxHealth; 
         }
     }
 

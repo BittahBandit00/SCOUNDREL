@@ -8,32 +8,50 @@ using System.Threading.Tasks;
 
 public class Game
 {
+    private Dungeon dungeon;
+    private OptionalRules optionalRules;
+    private Renderer renderer = new Renderer();
+    private MainMenu mainMenu;
+    
     private Deck deck = new Deck();
     private Health health = new Health();
-    private Dungeon dungeon;
-    private Renderer renderer = new Renderer();
     private InputController input = new InputController();
-    private MainMenu mainMenu = new MainMenu();
 
     private List<Card> weapon = new List<Card>();
-
 
     public bool enteringRoom = true;
     public bool hasHealed = false;
 
-    public Game()
+    //optional rules
+    private int skipCount = 1;
+    private bool ShowCardsRemaining = false;
+    private int hp;
+    public Game(OptionalRules rules, MainMenu menu)
     {
-        deck.Shuffle();
+        optionalRules = rules;
+        mainMenu = menu;
         dungeon = new Dungeon(deck);
+       
+        InitialiseOptionalRules();
+        deck.Shuffle();
     }
 
-    public void Start()
+    private void InitialiseOptionalRules()
+    {
+        health.SetMaxHealth(optionalRules.ExtraHealth);
+        skipCount = optionalRules.DoubleSkip ? 2 : 1;
+        ShowCardsRemaining = optionalRules.ShowCardRemaining;
+
+    }
+
+
+public void Start()
     {
         dungeon.DrawNewRoom();
 
         while (true)
         {
-            renderer.PrintRoom(dungeon.CurrentRoom, health.GetHealth(), weapon);
+            renderer.PrintRoom(dungeon.CurrentRoom, health.GetHealth(), weapon, deck.GetCardCount(), skipCount, ShowCardsRemaining );
 
 
             if (enteringRoom)
@@ -41,7 +59,7 @@ public class Game
                 Console.WriteLine("ACTIONS");
                 Console.WriteLine();
                 Console.WriteLine("  [F]   FIGHT");
-                Console.WriteLine("  [R]   RUN");
+                Console.WriteLine("  [S]   SKIP");
                 Console.WriteLine("  [Q]   QUIT");
                 Console.WriteLine();
                 Console.Write(">> ");
@@ -85,7 +103,7 @@ public class Game
             if (action == "f" || action == "fight")
                 return true;
 
-            if (action == "r" || action == "run")
+            if (action == "s" || action == "skip")
             {
                 if (deck.GetCardCount() == 0)
                 {
@@ -94,11 +112,16 @@ public class Game
                     continue;
                 }
 
-                dungeon.SkipRoom();
-                hasHealed = false;
-                enteringRoom = true;
-                return true;
+                if (skipCount > 0)
+                {
+                    skipCount--;
+                    dungeon.SkipRoom();
+                    hasHealed = false;
+                    enteringRoom = true;
+                    return false;
+                }
             }
+
 
             if (action == "q")
             {
@@ -153,6 +176,7 @@ public class Game
         {
             dungeon.DrawNextRoom();
             hasHealed = false;
+            skipCount = optionalRules.DoubleSkip ? 2 : 1;
             enteringRoom = true;
         }
     }

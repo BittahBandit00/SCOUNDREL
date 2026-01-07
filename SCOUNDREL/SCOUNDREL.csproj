@@ -54,6 +54,8 @@
     <Compile Include="GameScripts\Renderer.cs" />
     <Compile Include="Menu\Rules.cs" />
     <Compile Include="GameScripts\MainProgram.cs" />
+    <Compile Include="OptionalRules\OptionalRules.cs" />
+    <Compile Include="OptionalRules\OptionalRulesMenu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
