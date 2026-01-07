@@ -23,9 +23,10 @@ public class Game
     public bool hasHealed = false;
 
     //optional rules
-    private int skipCount = 1;
+    private int escapeCount = 1;
     private bool ShowCardsRemaining = false;
     private int hp;
+    private bool infiniteHeals = false;
     public Game(OptionalRules rules, MainMenu menu)
     {
         optionalRules = rules;
@@ -39,11 +40,23 @@ public class Game
     private void InitialiseOptionalRules()
     {
         health.SetMaxHealth(optionalRules.ExtraHealth);
-        skipCount = optionalRules.DoubleSkip ? 2 : 1;
-        ShowCardsRemaining = optionalRules.ShowCardRemaining;
+        escapeCount = SetSkips();
+        ShowCardsRemaining = optionalRules.ShowEncountersLeft;
+        infiniteHeals = optionalRules.InfiniteHeals;
+
+        if (optionalRules.LowAces)
+        {
+            foreach (var card in deck.cards)
+                card.SetAcesToOne();
+        }
+
 
     }
 
+    private int SetSkips()
+    {
+        return optionalRules.DoubleSkip ? 2 : 1;
+    }
 
 public void Start()
     {
@@ -51,7 +64,7 @@ public void Start()
 
         while (true)
         {
-            renderer.PrintRoom(dungeon.CurrentRoom, health.GetHealth(), weapon, deck.GetCardCount(), skipCount, ShowCardsRemaining );
+            renderer.PrintRoom(dungeon.CurrentRoom, health.GetHealth(), weapon, deck.GetCardCount() + dungeon.CurrentRoom.Count, escapeCount, ShowCardsRemaining );
 
 
             if (enteringRoom)
@@ -59,7 +72,7 @@ public void Start()
                 Console.WriteLine("ACTIONS");
                 Console.WriteLine();
                 Console.WriteLine("  [F]   FIGHT");
-                Console.WriteLine("  [S]   SKIP");
+                Console.WriteLine("  [E]   ESCAPE");
                 Console.WriteLine("  [Q]   QUIT");
                 Console.WriteLine();
                 Console.Write(">> ");
@@ -103,7 +116,7 @@ public void Start()
             if (action == "f" || action == "fight")
                 return true;
 
-            if (action == "s" || action == "skip")
+            if (action == "e" || action == "escape")
             {
                 if (deck.GetCardCount() == 0)
                 {
@@ -112,9 +125,9 @@ public void Start()
                     continue;
                 }
 
-                if (skipCount > 0)
+                if (escapeCount > 0)
                 {
-                    skipCount--;
+                    escapeCount--;
                     dungeon.SkipRoom();
                     hasHealed = false;
                     enteringRoom = true;
@@ -176,7 +189,7 @@ public void Start()
         {
             dungeon.DrawNextRoom();
             hasHealed = false;
-            skipCount = optionalRules.DoubleSkip ? 2 : 1;
+            escapeCount = SetSkips();
             enteringRoom = true;
         }
     }
@@ -185,7 +198,7 @@ public void Start()
 
     private void ResolveHeart(Card card)            // OPTIONAL RULES CANDIDATE - HEAL AS MANY TIMES
     {
-        if (hasHealed)
+        if (hasHealed && !infiniteHeals)
             return;
 
         health.Heal(card.GetValue());
@@ -201,30 +214,33 @@ public void Start()
 
     private void ResolveEnemy(Card card, bool useFists)
     {
-        int weaponValue = 0;
-
-        // If using weapon, get its value
-        if (!useFists && weapon.Count > 0)
-            weaponValue = weapon.Last().GetValue();
+        int weaponValue = (!useFists && weapon.Count > 0)
+            ? weapon.Last().GetValue()
+            : 0;
 
         int enemyValue = card.GetValue();
         int damage = 0;
 
-        // If weapon is an enemy card and too weak, it breaks → forced fists
-        if (!useFists && weapon.Count > 0 && (weapon.Last().Suit == "♣" || weapon.Last().Suit == "♠"))
+        bool isAltered = weapon.Count > 0 && (weapon.Last().Suit == "♣" || weapon.Last().Suit == "♠");
+        bool canMatch = optionalRules.AlteredWeaponCanMatch && isAltered;
+
+        // Determine if weapon breaks
+        if (!useFists && isAltered)
         {
-            if (enemyValue >= weaponValue)
+            bool weaponTooWeak =
+                canMatch ? enemyValue > weaponValue     // allow equal
+                         : enemyValue >= weaponValue;   // strict
+
+            if (weaponTooWeak)
             {
-                weaponValue = 0;
                 useFists = true;
+                weaponValue = 0;
             }
         }
 
-        // If you have no weapon at all → forced fists
         if (weapon.Count == 0)
             useFists = true;
 
-        // Damage calculation
         if (enemyValue > weaponValue)
             damage = enemyValue - weaponValue;
 

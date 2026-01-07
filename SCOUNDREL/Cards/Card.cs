@@ -9,6 +9,7 @@ public class Card
     public string Rank { get; }
     public string Suit { get; }
 
+    private bool aceIsOne = false;
     public Card(string rank, string suit)
     {
         Rank = rank;
@@ -25,9 +26,15 @@ public class Card
             case "J": return 11;
             case "Q": return 12;
             case "K": return 13;
-            case "A": return 14;
+            case "A": return aceIsOne ? 1 : 14;
             default: return 0;
         }
+    }
+
+
+    public void SetAcesToOne()
+    {
+        aceIsOne = true;
     }
 
     public override string ToString() => $"{Rank}{Suit}";

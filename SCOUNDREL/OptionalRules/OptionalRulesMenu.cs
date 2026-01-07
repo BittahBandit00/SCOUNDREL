@@ -22,14 +22,24 @@ public class OptionalRulesMenu
 
             {
                 case "1":
-                    rules.ShowCardRemaining = !rules.ShowCardRemaining;
+                    rules.ShowEncountersLeft = !rules.ShowEncountersLeft;
                     break;
                 case "2":
-                    rules.DoubleSkip = !rules.DoubleSkip;
+                    rules.AlteredWeaponCanMatch = !rules.AlteredWeaponCanMatch;
                     break;
                 case "3":
-                    rules.ExtraHealth = !rules.DoubleSkip;
+                    rules.DoubleSkip = !rules.DoubleSkip;
                     break;
+                case "4":
+                    rules.ExtraHealth = !rules.ExtraHealth;
+                    break;
+                case "5":
+                    rules.LowAces = !rules.LowAces;
+                    break;
+                case "6":
+                    rules.InfiniteHeals = !rules.InfiniteHeals;
+                    break;
+
 
                 case "b":
                     return;
@@ -49,12 +59,16 @@ public class OptionalRulesMenu
         Console.WriteLine("               OPTIONAL RULES                  ");
         Console.WriteLine("===============================================");
         Console.WriteLine();
-
-        Console.WriteLine($"  [1] Show Cards Remaining   :  {(rules.ShowCardRemaining ? "ON" : "OFF")}");
-        Console.WriteLine($"  [2] Double Skip            :  {(rules.DoubleSkip ? "ON" : "OFF")}");
-        Console.WriteLine($"  [3] Extra Health           :  {(rules.ExtraHealth ? "ON" : "OFF")}");
+        Console.WriteLine("   WARNING: These options make the game");
+        Console.WriteLine("            significantly easier.");
         Console.WriteLine();
-
+        Console.WriteLine($"  [1]  Show Encounters Left       :  {(rules.ShowEncountersLeft ? "ON" : "OFF")}");
+        Console.WriteLine($"  [2]  Altered Weapon Can Match   :  {(rules.AlteredWeaponCanMatch ? "ON" : "OFF")}");
+        Console.WriteLine($"  [3]  Double Escapes             :  {(rules.DoubleSkip ? "ON" : "OFF")}");
+        Console.WriteLine($"  [4]  25 Starting Health         :  {(rules.ExtraHealth ? "ON" : "OFF")}");
+        Console.WriteLine($"  [5]  Low Aces                   :  {(rules.LowAces ? "ON" : "OFF")}");
+        Console.WriteLine($"  [6]  Infinite Heals             :  {(rules.InfiniteHeals ? "ON" : "OFF")}");
+        Console.WriteLine();
         Console.WriteLine("-----------------------------------------------");
         Console.WriteLine(" [B] Back");
         Console.WriteLine("-----------------------------------------------");

@@ -13,9 +13,13 @@ public class Renderer
         Console.WriteLine("===============================================");
         Console.WriteLine("                 D U N G E O N                 ");
         Console.WriteLine("===============================================");
-        if (showCardsRemaining)
-            Console.WriteLine($"cards left:" + deckCount);
 
+        if (showCardsRemaining)
+        {
+            Console.WriteLine();
+            Console.WriteLine($"ENCOUNTERS:" + deckCount);
+
+        }
         Console.WriteLine();
 
         for (int i = 0; i < room.Count; i++)
@@ -30,7 +34,7 @@ public class Renderer
         Console.WriteLine("-----------------------------------------------");
         Console.WriteLine($" HEALTH: {health}");
         PrintWeapon(weapon);
-        Console.WriteLine($" SKIPS : {skips}");
+        Console.WriteLine($" ESCAPES LEFT : {skips}");
         Console.WriteLine("-----------------------------------------------");
         Console.WriteLine();
 

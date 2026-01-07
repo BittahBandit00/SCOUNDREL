@@ -96,7 +96,7 @@ public static class Rules
         Console.WriteLine("        than the enemy's value.");
         Console.WriteLine("      • Fist attacks ignore your weapon and always deal full damage.");
         Console.WriteLine();
-        Console.WriteLine("  RUN");
+        Console.WriteLine("  ESCAPE");
         Console.WriteLine("      • Sends all 4 cards to the *bottom* of the deck.");
         Console.WriteLine("      • Cannot be used twice in a row - no coward loops.");
         Console.WriteLine();
