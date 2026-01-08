@@ -1,10 +1,15 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
 
 
 public class Renderer
 {
+    private HashSet<int> haSlots = new HashSet<int>();
+    private int cardRowY;
+    public int CardRowY => cardRowY;
+
 
     public void PrintRoom(List<Card> room, int health, List<Card> weapon, int deckCount, int skips, bool showCardsRemaining)
     {
@@ -18,16 +23,24 @@ public class Renderer
         {
             Console.WriteLine();
             Console.WriteLine($"ENCOUNTERS:" + deckCount);
-
         }
+
         Console.WriteLine();
 
+        cardRowY = Console.CursorTop;
+        // Print the cards
         for (int i = 0; i < room.Count; i++)
         {
             Console.Write($" [{i + 1}] ");
-            PrintCard(room[i]);
+
+            if (haSlots.Contains(i))
+                Console.Write("HA!");
+            else
+                PrintCard(room[i]);
+
             Console.Write("    ");
         }
+
 
         Console.WriteLine();
         Console.WriteLine();
@@ -37,8 +50,8 @@ public class Renderer
         Console.WriteLine($" ESCAPES LEFT : {skips}");
         Console.WriteLine("-----------------------------------------------");
         Console.WriteLine();
-
     }
+
 
 
     private void PrintWeapon(List<Card> weapon)
@@ -48,24 +61,27 @@ public class Renderer
             Console.WriteLine(" WEAPON: FISTS");
             return;
         }
-
-        // Active durability card (last)
         Console.Write(" WEAPON: ");
-        PrintCard(weapon[weapon.Count - 1]);
 
-        // If only one card, we're done
+        if (weapon.Count > 1)
+        {
+            PrintCard(weapon[weapon.Count - 1]); // the first card in the chain
+        }
+        else
+        {
+            PrintCard(weapon[weapon.Count - 1]);
+        }
+
         if (weapon.Count == 1)
         {
             Console.WriteLine();
             return;
         }
-
-        // Print chain: first -> ... -> last
         Console.Write(" (");
 
         for (int i = 0; i < weapon.Count; i++)
         {
-            PrintCard(weapon[i]);
+            PrintCard(weapon[i], ConsoleColor.Gray);
             if (i < weapon.Count - 1)
                 Console.Write(" > ");
         }
@@ -76,18 +92,28 @@ public class Renderer
 
 
 
-    public void PrintCard(Card card)
+    public void PrintCard(Card card, ConsoleColor? overrideColor = null)
     {
         var original = Console.ForegroundColor;
 
-        if (card.Suit == "♥" || card.Suit == "♦")
-            Console.ForegroundColor = ConsoleColor.Red;
+        if (overrideColor.HasValue)
+        {
+            Console.ForegroundColor = overrideColor.Value;
+        }
         else
-            Console.ForegroundColor = ConsoleColor.DarkCyan;
+        {
+            if (card.Suit == "♥" || card.Suit == "♦")
+                Console.ForegroundColor = ConsoleColor.Red;
+            else if (card.Suit == "★")
+                Console.ForegroundColor = ConsoleColor.White;
+            else
+                Console.ForegroundColor = ConsoleColor.DarkCyan;
+        }
 
         Console.Write($"{card.Rank}{card.Suit}");
         Console.ForegroundColor = original;
     }
+
 
     public void PrintWin()
     {
@@ -129,6 +155,65 @@ public class Renderer
         Console.WriteLine();
         Console.WriteLine("   Press Enter to return to the main menu...");
         Console.ReadLine();
+    }
+
+    int transformDelay = 75;
+
+    public void AnimateCardLaughs(List<Card> room, int selectedIndex)
+    {
+        const int flashes = 6;
+
+        for (int f = 0; f < flashes; f++)
+        {
+            Console.SetCursorPosition(0, CardRowY);
+
+            for (int j = 0; j < room.Count; j++)
+            {
+                Console.Write($" [{j + 1}] ");
+
+                if (j == selectedIndex)
+                {
+                    PrintCard(room[j]);
+                }
+                else
+                {
+                    var original = Console.ForegroundColor;
+                    Console.ForegroundColor = ConsoleColor.Cyan; // HA! colour
+                    Console.Write("HA!");
+                    Console.ForegroundColor = original;
+                }
+
+                Console.Write("    ");
+            }
+
+            Thread.Sleep(transformDelay);
+
+            Console.SetCursorPosition(0, CardRowY);
+
+            for (int j = 0; j < room.Count; j++)
+            {
+                Console.Write($" [{j + 1}] ");
+
+                if (j == selectedIndex)
+                {
+                    PrintCard(room[j]);
+                }
+                else
+                {
+                    Console.Write("   "); 
+                }
+
+                Console.Write("    ");
+            }
+
+            Thread.Sleep(transformDelay);
+        }
+    }
+
+
+    public void ClearHaSlots()
+    {
+        haSlots.Clear();
     }
 
 

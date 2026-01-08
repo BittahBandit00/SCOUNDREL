@@ -63,12 +63,10 @@ public class MainMenu
                     optionalRulesMenu.Show();
                     continue;
 
-
-
-                case "d": // DEBUG ONLY
-                    //Renderer r = new Renderer();
-                    //r.PrintWin();
-                    continue;
+                //case "d": // DEBUG ONLY
+                //   Renderer r = new Renderer();
+                //    r.PrintWin();
+                //    continue;
 
 
                 default:

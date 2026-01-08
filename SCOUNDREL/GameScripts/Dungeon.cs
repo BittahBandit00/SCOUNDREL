@@ -41,4 +41,12 @@ public class Dungeon
 
         DrawNewRoom();
     }
+
+    public void Reset()
+    {
+        foreach (var card in CurrentRoom)
+            deck.ReturnCardToBottom(card);
+        CurrentRoom.Clear();
+    }
+
 }

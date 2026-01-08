@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 public class OptionalRules
 {
 
-    // make things easier
+    // OPTIONAL RULES ==============================
     public bool ShowEncountersLeft { get; set; }
     public bool DoubleSkip { get; set; }
     public bool ExtraHealth { get; set; }
@@ -15,15 +15,19 @@ public class OptionalRules
     public bool LowAces { get; set; }
     public bool InfiniteHeals { get; set; }
 
+    public bool JokerShuffle { get; set; }
+
+
     // lucky 7's -> all 7's heal +1
 
-    // CHALLENGE MODE
+    // CHALLENGE MODE ===============================
 
-    // no heals
-    // strongest weapon is 5
+    public bool AllHeartsAreOne { get; set; }
+    
     // Death Timer: 1 Minute
     // Double Encounters
     // Jokers shuffle encounters into deck and reset the deck
+    // Queens Must Fight
 
     public void ResetToDefaults()
     {
@@ -33,6 +37,9 @@ public class OptionalRules
         AlteredWeaponCanMatch = false;
         LowAces = false;
         InfiniteHeals = false;
+
+        AllHeartsAreOne = false;
+        JokerShuffle = false;
     }
 }
 

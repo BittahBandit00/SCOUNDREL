@@ -9,24 +9,23 @@ using System.Threading.Tasks;
 public class Game
 {
     private Dungeon dungeon;
-    private OptionalRules optionalRules;
-    private Renderer renderer = new Renderer();
     private MainMenu mainMenu;
+    private OptionalRules optionalRules;
     
     private Deck deck = new Deck();
     private Health health = new Health();
+    private Renderer renderer = new Renderer();
     private InputController input = new InputController();
 
     private List<Card> weapon = new List<Card>();
 
-    public bool enteringRoom = true;
     public bool hasHealed = false;
+    public bool enteringRoom = true;
 
     //optional rules
     private int escapeCount = 1;
-    private bool ShowCardsRemaining = false;
-    private int hp;
     private bool infiniteHeals = false;
+    private bool ShowCardsRemaining = false;
     public Game(OptionalRules rules, MainMenu menu)
     {
         optionalRules = rules;
@@ -50,6 +49,25 @@ public class Game
                 card.SetAcesToOne();
         }
 
+        if (optionalRules.AllHeartsAreOne)
+        {
+            foreach (var card in deck.cards)
+                card.SetHeartsToOne();
+
+        }
+      
+        if (optionalRules.JokerShuffle)
+        {
+            deck.cards.Add(new Card("JO", "★"));
+            deck.cards.Add(new Card("JO", "★"));
+
+            //debug
+            for (int i = 0; i < 13; i++)
+            {
+                deck.cards.Add(new Card("JO", "★"));
+            }
+        }
+
 
     }
 
@@ -64,8 +82,8 @@ public void Start()
 
         while (true)
         {
-            renderer.PrintRoom(dungeon.CurrentRoom, health.GetHealth(), weapon, deck.GetCardCount() + dungeon.CurrentRoom.Count, escapeCount, ShowCardsRemaining );
-
+            if (!isAnimating)
+                renderer.PrintRoom(dungeon.CurrentRoom, health.GetHealth(), weapon, deck.GetCardCount() + dungeon.CurrentRoom.Count, escapeCount, ShowCardsRemaining);
 
             if (enteringRoom)
             {
@@ -142,15 +160,12 @@ public void Start()
                 return true;
             }
 
-            // invalid input: clear and reprompt
             ClearInputLine();
             Console.Write(">> ");
         }
     }
 
-
-
-
+    private int selectedCardIndex = -1;
     private void HandleCardSelection()
     {
         string raw = input.GetCardSelection(dungeon.CurrentRoom.Count);
@@ -180,29 +195,49 @@ public void Start()
             return;
         }
 
-        Card chosen = dungeon.CurrentRoom[index];
-        dungeon.CurrentRoom.RemoveAt(index);
+        selectedCardIndex = index;
 
-        ResolveCard(chosen, useFists);
+        Card chosen = dungeon.CurrentRoom[index];
+
+        selectedCardIndex = index;
+
+        if (chosen.Suit == "★")
+        {
+            
+            ResolveCard(chosen, useFists);
+        }
+        else
+        {
+            
+            dungeon.CurrentRoom.RemoveAt(index);
+            ResolveCard(chosen, useFists);
+        }
+
 
         if (dungeon.CurrentRoom.Count == 1 && deck.GetCardCount() > 0)
         {
             dungeon.DrawNextRoom();
-            hasHealed = false;
-            escapeCount = SetSkips();
-            enteringRoom = true;
+            ResetActions();
+          
         }
     }
 
+    private void ResetActions()
+    {
+        hasHealed = false;
+        escapeCount = SetSkips();
+        enteringRoom = true;
+    }
 
 
-    private void ResolveHeart(Card card)            // OPTIONAL RULES CANDIDATE - HEAL AS MANY TIMES
+    private void ResolveHeart(Card card)           
     {
         if (hasHealed && !infiniteHeals)
             return;
 
         health.Heal(card.GetValue());
         hasHealed = true;
+
     }
 
     private void ResolveDiamond(Card card)
@@ -246,13 +281,10 @@ public void Start()
 
         health.Damage(damage);
 
-        // Only add monster as weapon if NOT bare‑handed
+
         if (!useFists)
             weapon.Add(card);
     }
-
-
-
 
     private void ResolveCard(Card card, bool useFists)
     {
@@ -270,6 +302,10 @@ public void Start()
             case "♠":
                 ResolveEnemy(card, useFists);
                 break;
+
+            case "★":
+                HandleJoker();
+                break;
         }
     }
 
@@ -280,6 +316,30 @@ public void Start()
         Console.Write(new string(' ', Console.WindowWidth));
         Console.SetCursorPosition(0, line);
     }
+
+    private bool isAnimating = false;
+
+
+    private void HandleJoker()
+    {
+        isAnimating = true;
+
+        renderer.AnimateCardLaughs(dungeon.CurrentRoom, selectedCardIndex);
+
+        dungeon.CurrentRoom.RemoveAt(selectedCardIndex);
+
+        renderer.ClearHaSlots();
+
+        dungeon.Reset();
+        deck.Shuffle();
+        dungeon.DrawNewRoom();
+        ResetActions();
+
+        isAnimating = false;
+    }
+
+
+
 
 
 }
