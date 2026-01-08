@@ -15,7 +15,6 @@ public class OptionalRules
     public bool LowAces { get; set; }
     public bool InfiniteHeals { get; set; }
 
-    public bool JokerShuffle { get; set; }
 
 
     // lucky 7's -> all 7's heal +1
@@ -23,10 +22,11 @@ public class OptionalRules
     // CHALLENGE MODE ===============================
 
     public bool AllHeartsAreOne { get; set; }
-    
-    // Death Timer: 1 Minute
+    public bool JokerShuffle { get; set; }
+    public bool TurnCount { get; set; }
+
+
     // Double Encounters
-    // Jokers shuffle encounters into deck and reset the deck
     // Queens Must Fight
 
     public void ResetToDefaults()
@@ -40,6 +40,7 @@ public class OptionalRules
 
         AllHeartsAreOne = false;
         JokerShuffle = false;
+        TurnCount = false;
     }
 }
 

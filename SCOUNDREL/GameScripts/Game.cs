@@ -26,6 +26,9 @@ public class Game
     private int escapeCount = 1;
     private bool infiniteHeals = false;
     private bool ShowCardsRemaining = false;
+    private bool turnCounter = false;
+    private int turnsLeft = 70;
+
     public Game(OptionalRules rules, MainMenu menu)
     {
         optionalRules = rules;
@@ -42,6 +45,7 @@ public class Game
         escapeCount = SetSkips();
         ShowCardsRemaining = optionalRules.ShowEncountersLeft;
         infiniteHeals = optionalRules.InfiniteHeals;
+        turnCounter = optionalRules.TurnCount;
 
         if (optionalRules.LowAces)
         {
@@ -62,13 +66,17 @@ public class Game
             deck.cards.Add(new Card("JO", "★"));
 
             //debug
-            for (int i = 0; i < 13; i++)
-            {
-                deck.cards.Add(new Card("JO", "★"));
-            }
+            //for (int i = 0; i < 13; i++)
+            //{
+            //    deck.cards.Add(new Card("JO", "★"));
+            //}
         }
+    }
 
-
+    private void MinusTurn()
+    {
+        if (turnCounter)
+            turnsLeft--;
     }
 
     private int SetSkips()
@@ -83,14 +91,24 @@ public void Start()
         while (true)
         {
             if (!isAnimating)
-                renderer.PrintRoom(dungeon.CurrentRoom, health.GetHealth(), weapon, deck.GetCardCount() + dungeon.CurrentRoom.Count, escapeCount, ShowCardsRemaining);
+                renderer.PrintRoom(
+                    dungeon.CurrentRoom,
+                    health.GetHealth(),
+                    weapon,
+                    deck.GetCardCount() + dungeon.CurrentRoom.Count,
+                    escapeCount,
+                    ShowCardsRemaining,
+                    turnCounter ? turnsLeft : (int?)null
+                );
 
-            if (enteringRoom)
+            if (enteringRoom)   
             {
                 Console.WriteLine("ACTIONS");
                 Console.WriteLine();
                 Console.WriteLine("  [F]   FIGHT");
                 Console.WriteLine("  [E]   ESCAPE");
+                Console.WriteLine();
+                Console.WriteLine("  [R]   RULES");
                 Console.WriteLine("  [Q]   QUIT");
                 Console.WriteLine();
                 Console.Write(">> ");
@@ -109,6 +127,12 @@ public void Start()
             }
 
             if (health.GetHealth() == 0)
+            {
+                renderer.PrintDefeat();
+                return;
+            }
+
+            if(turnCounter && turnsLeft <= 0)
             {
                 renderer.PrintDefeat();
                 return;
@@ -132,10 +156,15 @@ public void Start()
             action = action.ToLower();
 
             if (action == "f" || action == "fight")
+            {
+                MinusTurn();
                 return true;
+            }
 
             if (action == "e" || action == "escape")
             {
+                MinusTurn();
+
                 if (deck.GetCardCount() == 0)
                 {
                     ClearInputLine();
@@ -153,11 +182,16 @@ public void Start()
                 }
             }
 
+            if (action == "r")
+            {
+                Rules.ShowQuickReference();
+                return false;
+            }
 
             if (action == "q")
             {
                 mainMenu.Show();
-                return true;
+                return false;
             }
 
             ClearInputLine();
@@ -213,6 +247,7 @@ public void Start()
             ResolveCard(chosen, useFists);
         }
 
+        MinusTurn();
 
         if (dungeon.CurrentRoom.Count == 1 && deck.GetCardCount() > 0)
         {
@@ -259,7 +294,7 @@ public void Start()
         bool isAltered = weapon.Count > 0 && (weapon.Last().Suit == "♣" || weapon.Last().Suit == "♠");
         bool canMatch = optionalRules.AlteredWeaponCanMatch && isAltered;
 
-        // Determine if weapon breaks
+        
         if (!useFists && isAltered)
         {
             bool weaponTooWeak =

@@ -11,7 +11,7 @@ public class Renderer
     public int CardRowY => cardRowY;
 
 
-    public void PrintRoom(List<Card> room, int health, List<Card> weapon, int deckCount, int skips, bool showCardsRemaining)
+    public void PrintRoom(List<Card> room, int health, List<Card> weapon, int deckCount, int skips, bool showCardsRemaining, int? turnsLeft)
     {
         Console.Clear();
 
@@ -19,10 +19,19 @@ public class Renderer
         Console.WriteLine("                 D U N G E O N                 ");
         Console.WriteLine("===============================================");
 
+        if(turnsLeft.HasValue || showCardsRemaining)
+        {
+        Console.WriteLine();
+
+        }
+
+        if (turnsLeft.HasValue)
+        {
+            Console.WriteLine($"TURNS LEFT: {turnsLeft}");
+        }
         if (showCardsRemaining)
         {
-            Console.WriteLine();
-            Console.WriteLine($"ENCOUNTERS:" + deckCount);
+            Console.WriteLine($"CARDS LEFT: {deckCount}");
         }
 
         Console.WriteLine();

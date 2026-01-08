@@ -108,7 +108,7 @@ public class OptionalRulesMenu
     }
 
     // ============================
-    // CHALLENGES SUBMENU (placeholder)
+    // CHALLENGES SUBMENU 
     // ============================
     private void ShowChallenges()
     {
@@ -122,6 +122,7 @@ public class OptionalRulesMenu
             Console.WriteLine("  These options make the game harder.");
             Console.WriteLine();
             Console.WriteLine($"  [1] All Hearts Are One         : {(rules.AllHeartsAreOne ? "ON" : "OFF")}");
+            Console.WriteLine($"  [2] Turns Left                 : {(rules.TurnCount ? "ON" : "OFF")}");
             Console.WriteLine($"  [J] Chaotic Jokers             : {(rules.JokerShuffle ? "ON" : "OFF")}");
             Console.WriteLine();
             Console.WriteLine("-----------------------------------------------");
@@ -134,6 +135,9 @@ public class OptionalRulesMenu
             {
                 case "1": 
                     rules.AllHeartsAreOne = !rules.AllHeartsAreOne; 
+                    break;
+                case "2":
+                    rules.TurnCount = !rules.TurnCount;
                     break;
                 case "j":
                     rules.JokerShuffle = !rules.JokerShuffle;

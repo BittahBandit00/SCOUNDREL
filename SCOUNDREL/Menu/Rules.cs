@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 public static class Rules
 {
@@ -48,26 +49,23 @@ public static class Rules
         Console.WriteLine("      • An enemy's value is its attack strength - you take that much damage.");
         Console.WriteLine("      • Your weapon can reduce this damage when it applies.");
         Console.WriteLine("      • With no weapon, you always take the full attack value.");
-        Console.WriteLine("      • You may choose to fight an enemy with your FISTS at any time.");
-        Console.WriteLine("      • Fist fights ignore your weapon and you receive full damage.");
+        LineWithHighlight("      • You may choose to fight an enemy with your FISTS at any time.", ("FISTS", ConsoleColor.Yellow));
+        LineWithHighlight("      • FISTS ignore your weapon and you receive full damage.", ("FISTS", ConsoleColor.Yellow));
         Console.WriteLine();
 
         // ===================== WEAPONS =====================
         Console.Write("  WEAPONS   ");
         WriteColored("♦", ConsoleColor.Red);
         Console.WriteLine();
-        Console.WriteLine("      • Picking up a diamond card gives you a weapon with that card's value.");
-        Console.WriteLine("      • A fresh weapon can be used against any enemy, reducing damage");
-        Console.WriteLine("        by its value, even if the enemy's value is higher.");
-        Console.WriteLine("      • When you defeat an enemy using your weapon, its durability");
-        Console.WriteLine("        becomes that enemy's value.");
-        Console.WriteLine("      • After that, your weapon only protects you against enemies");
-        Console.WriteLine("        with a MODIFIED value than its current durability.");
-        Console.WriteLine("      • If you use your weapon against an enemy whose value is not lower,");
-        Console.WriteLine("        it fails to protect you and you take full damage.");
-        Console.WriteLine("      • Fist fights do not use or change your weapon's durability.");
-        Console.WriteLine("      • Tip: Use fresh, high-value weapons to safely fight strong enemies");
-        Console.WriteLine("        before your durability locks in to a lower value.");
+        LineWithHighlight("      • Picking up a diamond card gives you a RED weapon with that card's value.", ("RED", ConsoleColor.Red));
+        LineWithHighlight("      • A RED weapon can be used against any enemy, blocking damage", ("RED", ConsoleColor.Red)); ;
+        Console.WriteLine("        equal to your weapon's value, even if the enemy's value is higher.");
+        Console.WriteLine("      • When you defeat an enemy using your weapon, your weapon becomes");
+        LineWithHighlight("        BLUE.", ("BLUE", ConsoleColor.DarkCyan));
+        LineWithHighlight("      • BLUE weapons only work on enemies with a lower value.", ("BLUE", ConsoleColor.DarkCyan));
+        LineWithHighlight("      • If you use your BLUE weapon against an enemy whose value is not lower,", ("BLUE", ConsoleColor.DarkCyan));
+        LineWithHighlight("        you will be forced into using FISTS and you take full damage.", ("FISTS", ConsoleColor.Yellow));
+        LineWithHighlight("      • Using FISTS never use or change your weapon.", ("FISTS", ConsoleColor.Yellow));
         Console.WriteLine();
 
 
@@ -88,13 +86,13 @@ public static class Rules
         Console.WriteLine();
         Console.WriteLine("  FIGHT");
         Console.WriteLine("      • Select a card (1-4) and resolve its effect immediately.");
-        Console.WriteLine("      • Add 'B' or 'F' to fight with your fists.");
-        Console.WriteLine("        Example: '2F' fights card 2 using your fists.");
-        Console.WriteLine("      • If you defeat an enemy using a red weapon, its durability");
-        Console.WriteLine("        becomes that enemy's value (see WEAPONS section).");
-        Console.WriteLine("      • A weapon only protects you if its durability is higher");
+        LineWithHighlight("      • Add 'B' or 'F' to fight with your FISTS.", ("FISTS", ConsoleColor.Yellow));
+        LineWithHighlight("        Example: '2F' fights card [2] using your FISTS.", ("FISTS", ConsoleColor.Yellow));
+        LineWithHighlight("      • If you defeat an enemy using a RED weapon it becomes,", ("RED", ConsoleColor.Red));
+        LineWithHighlight("        a BLUE weapon with that enemy's value (see WEAPONS section).", ("BLUE", ConsoleColor.DarkCyan));
+        Console.WriteLine("      • A weapon only protects you if its value is higher");
         Console.WriteLine("        than the enemy's value.");
-        Console.WriteLine("      • Fist attacks ignore your weapon and always deal full damage.");
+        LineWithHighlight("      • FISTS attacks ignore your weapon and always deal full damage.", ("FISTS", ConsoleColor.Yellow));
         Console.WriteLine();
         Console.WriteLine("  ESCAPE");
         Console.WriteLine("      • Sends all 4 cards to the *bottom* of the deck.");
@@ -112,6 +110,80 @@ public static class Rules
         Console.WriteLine();
         Console.WriteLine("Press Enter to return to the menu...");
         Console.WriteLine("Tip: Scroll up if you missed anything.");
+
+
         Console.ReadLine();
     }
+
+    public static void ShowQuickReference()
+    {
+        Console.Clear();
+        Console.WriteLine("------------------------------------------------------------------------------");
+        Console.WriteLine(" QUICK REFERENCE");
+        Console.WriteLine("------------------------------------------------------------------------------");
+
+        WriteColored("♣", ConsoleColor.DarkCyan);
+        Console.Write(" / ");
+        WriteColored("♠", ConsoleColor.DarkCyan);
+        Console.WriteLine("  ENEMY — Take damage equal to enemy value");
+
+        WriteColored("♥", ConsoleColor.Red);
+        Console.WriteLine("  POTION — Heal for card value (max 1 per room)");
+
+        WriteColored("♦", ConsoleColor.Red);
+        Console.WriteLine("  WEAPON — Gain a RED weapon with that card's value");
+
+        Console.WriteLine();
+        LineWithHighlight("RED WEAPON — Blocks damage equal to its value", ("RED", ConsoleColor.Red));
+        LineWithHighlight("BLUE WEAPON — Only works on enemies with lower value", ("BLUE", ConsoleColor.DarkCyan));
+        LineWithHighlight("FISTS — Always take full damage", ("FISTS", ConsoleColor.Yellow));
+
+        Console.WriteLine();
+        Console.WriteLine("ESCAPE — Sends all 4 cards to the bottom of the deck");
+        Console.WriteLine("WIN — Empty the deck and clear the final room");
+        Console.WriteLine();
+        Console.WriteLine("Press Enter to return to the Dungeon.");
+        Console.ReadLine();
+    }
+
+    private static void LineWithHighlight(
+    string text,
+    params (string word, ConsoleColor color)[] highlights)
+    {
+        var original = Console.ForegroundColor;
+
+        int index = 0;
+
+        while (index < text.Length)
+        {
+            // Find the next highlight match
+            var match = highlights
+                .Select(h => (h.word, h.color, pos: text.IndexOf(h.word, index, StringComparison.OrdinalIgnoreCase)))
+                .Where(m => m.pos >= 0)
+                .OrderBy(m => m.pos)
+                .FirstOrDefault();
+
+            // No more matches - write the rest normally
+            if (match.word == null)
+            {
+                Console.Write(text.Substring(index));
+                break;
+            }
+
+            // Write text before the match
+            if (match.pos > index)
+                Console.Write(text.Substring(index, match.pos - index));
+
+            // Write the highlighted word
+            Console.ForegroundColor = match.color;
+            Console.Write(match.word);
+            Console.ForegroundColor = original;
+
+            // Move index past the highlighted word
+            index = match.pos + match.word.Length;
+        }
+
+        Console.WriteLine();
+    }
+
 }
