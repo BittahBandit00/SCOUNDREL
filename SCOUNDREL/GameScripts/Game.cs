@@ -66,8 +66,8 @@ public class Game
         if (optionalRules.JokerShuffle)
         {
             // Debug jokers
-            for (int i = 0; i < 20; i++)
-                deck.cards.Add(new Card("JO", "★"));
+            //for (int i = 0; i < 20; i++)
+            //    deck.cards.Add(new Card("JO", "★"));
 
             // Base jokers
             deck.cards.Add(new Card("JO", "★"));
@@ -82,6 +82,11 @@ public class Game
                 copy.Add(new Card(card.Rank, card.Suit));
 
             deck.cards.AddRange(copy);
+
+            if (optionalRules.TurnCount)
+            {
+                turnsLeft = 140; 
+            }
         }
 
         // this will remove debug debug jokers
