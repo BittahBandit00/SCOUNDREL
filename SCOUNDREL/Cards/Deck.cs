@@ -9,10 +9,10 @@ public class Deck
 
     public Deck()
     {
-        string[] blackSuits = { "♣", "♠" };
+        string[] blackSuits = { "C", "S" };
         string[] blackRanks = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A" };
 
-        string[] redSuits = { "♥", "♦" };
+        string[] redSuits = { "H", "D" };
         string[] redRanks = { "2", "3", "4", "5", "6", "7", "8", "9", "10" };
 
         foreach (var suit in blackSuits)
