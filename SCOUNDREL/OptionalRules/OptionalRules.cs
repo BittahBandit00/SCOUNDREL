@@ -24,6 +24,8 @@ public class OptionalRules
     public bool AllHeartsAreOne { get; set; }
     public bool JokerShuffle { get; set; }
     public bool TurnCount { get; set; }
+    public bool DoubleEncounters { get; set; }
+    public bool DoubleDeck { get; set; }
 
 
     // Double Encounters
@@ -40,6 +42,7 @@ public class OptionalRules
 
         AllHeartsAreOne = false;
         JokerShuffle = false;
+        DoubleEncounters = false;   
         TurnCount = false;
     }
 }

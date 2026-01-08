@@ -24,6 +24,7 @@ public class Game
 
     //optional rules
     private int escapeCount = 1;
+    private bool doubleDeck = false;
     private bool infiniteHeals = false;
     private bool ShowCardsRemaining = false;
     private bool turnCounter = false;
@@ -31,6 +32,7 @@ public class Game
 
     public Game(OptionalRules rules, MainMenu menu)
     {
+        
         optionalRules = rules;
         mainMenu = menu;
         dungeon = new Dungeon(deck);
@@ -46,6 +48,7 @@ public class Game
         ShowCardsRemaining = optionalRules.ShowEncountersLeft;
         infiniteHeals = optionalRules.InfiniteHeals;
         turnCounter = optionalRules.TurnCount;
+        dungeon.SetRoomCount(optionalRules.DoubleEncounters ? 8 : 4);
 
         if (optionalRules.LowAces)
         {
@@ -59,18 +62,39 @@ public class Game
                 card.SetHeartsToOne();
 
         }
-      
+
         if (optionalRules.JokerShuffle)
         {
-            deck.cards.Add(new Card("JO", "★"));
-            deck.cards.Add(new Card("JO", "★"));
+            // Debug jokers
+            for (int i = 0; i < 20; i++)
+                deck.cards.Add(new Card("JO", "★"));
 
-            //debug
-            //for (int i = 0; i < 13; i++)
-            //{
-            //    deck.cards.Add(new Card("JO", "★"));
-            //}
+            // Base jokers
+            deck.cards.Add(new Card("JO", "★"));
+            deck.cards.Add(new Card("JO", "★"));
         }
+
+        if (optionalRules.DoubleDeck)
+        {
+            List<Card> copy = new List<Card>();
+
+            foreach (var card in deck.cards)
+                copy.Add(new Card(card.Rank, card.Suit));
+
+            deck.cards.AddRange(copy);
+        }
+
+        // this will remove debug debug jokers
+        if (optionalRules.JokerShuffle && optionalRules.DoubleDeck)
+        {
+            // Remove all jokers
+            deck.cards.RemoveAll(c => c.Suit == "★" && c.Rank == "JO");
+
+            // Add exactly 4 jokers
+            for (int i = 0; i < 4; i++)
+                deck.cards.Add(new Card("JO", "★"));
+        }
+
     }
 
     private void MinusTurn()

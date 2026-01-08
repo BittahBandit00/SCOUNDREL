@@ -3,18 +3,22 @@
 public class Dungeon
 {
     private Deck deck;
+    private int roomCount;
     public List<Card> CurrentRoom { get; private set; } = new List<Card>();
 
     public Dungeon(Deck deck)
     {
         this.deck = deck;
+       
+    }
+
+    public void SetRoomCount(int roomCount)
+    {
+        this.roomCount = roomCount;
     }
 
     public void DrawNewRoom()
     {
-        int roomCount = 4;             // good candidate for optional rule
-
-
         CurrentRoom.Clear();
 
 
@@ -27,7 +31,7 @@ public class Dungeon
 
     public void DrawNextRoom()
     {
-        while (CurrentRoom.Count < 4 && deck.GetCardCount() > 0)
+        while (CurrentRoom.Count < roomCount && deck.GetCardCount() > 0)
         {
             CurrentRoom.Add(deck.Draw());
         }

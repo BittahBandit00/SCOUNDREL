@@ -122,7 +122,9 @@ public class OptionalRulesMenu
             Console.WriteLine("  These options make the game harder.");
             Console.WriteLine();
             Console.WriteLine($"  [1] All Hearts Are One         : {(rules.AllHeartsAreOne ? "ON" : "OFF")}");
-            Console.WriteLine($"  [2] Turns Left                 : {(rules.TurnCount ? "ON" : "OFF")}");
+            Console.WriteLine($"  [2] Max Turn Count             : {(rules.TurnCount ? "ON" : "OFF")}");
+            Console.WriteLine($"  [3] Double Encounters          : {(rules.DoubleEncounters ? "ON" : "OFF")}");
+            Console.WriteLine($"  [4] Double Deck                : {(rules.DoubleDeck ? "ON" : "OFF")}");
             Console.WriteLine($"  [J] Chaotic Jokers             : {(rules.JokerShuffle ? "ON" : "OFF")}");
             Console.WriteLine();
             Console.WriteLine("-----------------------------------------------");
@@ -138,6 +140,12 @@ public class OptionalRulesMenu
                     break;
                 case "2":
                     rules.TurnCount = !rules.TurnCount;
+                    break;
+                case "3":
+                    rules.DoubleEncounters = !rules.DoubleEncounters;
+                    break;
+                case "4":
+                    rules.DoubleDeck= !rules.DoubleDeck;
                     break;
                 case "j":
                     rules.JokerShuffle = !rules.JokerShuffle;
