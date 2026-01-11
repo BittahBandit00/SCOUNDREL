@@ -24,7 +24,7 @@ public class Game
 
     //optional rules
     private int escapeCount = 1;
-    private bool doubleDeck = false;
+    private int limitedEscape = 5;
     private bool infiniteHeals = false;
     private bool ShowCardsRemaining = false;
     private bool turnCounter = false;
@@ -50,6 +50,12 @@ public class Game
         turnCounter = optionalRules.TurnCount;
         dungeon.SetRoomCount(optionalRules.DoubleEncounters ? 8 : 4);
 
+        // LIMITED ESCAPES RULE
+        if (optionalRules.LimitedEscapes)
+        {
+            escapeCount = limitedEscape; // or whatever number you want
+        }
+
         if (optionalRules.LowAces)
         {
             foreach (var card in deck.cards)
@@ -67,11 +73,11 @@ public class Game
         {
             // Debug jokers
             //for (int i = 0; i < 20; i++)
-            //    deck.cards.Add(new Card("JO", "★"));
+            //    deck.cards.Add(new Card("JO", "JO"));
 
             // Base jokers
-            deck.cards.Add(new Card("JO", "★"));
-            deck.cards.Add(new Card("JO", "★"));
+            deck.cards.Add(new Card("JO", "JO"));
+            deck.cards.Add(new Card("JO", "JO"));
         }
 
         if (optionalRules.DoubleDeck)
@@ -93,12 +99,15 @@ public class Game
         if (optionalRules.JokerShuffle && optionalRules.DoubleDeck)
         {
             // Remove all jokers
-            deck.cards.RemoveAll(c => c.Suit == "★" && c.Rank == "JO");
+            deck.cards.RemoveAll(c => c.Suit == "JO" && c.Rank == "JO");
 
             // Add exactly 4 jokers
             for (int i = 0; i < 4; i++)
-                deck.cards.Add(new Card("JO", "★"));
+                deck.cards.Add(new Card("JO", "JO"));
         }
+
+    
+
 
     }
 
@@ -229,21 +238,23 @@ public void Start()
     }
 
     private int selectedCardIndex = -1;
+
     private void HandleCardSelection()
     {
         string raw = input.GetCardSelection(dungeon.CurrentRoom.Count);
+        string trimmed = raw.Trim().ToLower();
 
         bool useFists = false;
 
-        string trimmed = raw.Trim().ToLower();
-
-        // detect bare‑handed mode
-        if (trimmed.EndsWith("b") || trimmed.EndsWith("bare") || trimmed.EndsWith("fists") || trimmed.EndsWith("f"))
+        // Detect bare‑handed mode
+        if (trimmed.EndsWith("b") || trimmed.EndsWith("bare") ||
+            trimmed.EndsWith("fists") || trimmed.EndsWith("f"))
         {
             useFists = true;
             trimmed = new string(trimmed.TakeWhile(char.IsDigit).ToArray());
         }
 
+        // Validate number
         if (!int.TryParse(trimmed, out int index))
         {
             Console.WriteLine("Invalid selection.");
@@ -252,6 +263,7 @@ public void Start()
 
         index -= 1;
 
+        // Validate range
         if (index < 0 || index >= dungeon.CurrentRoom.Count)
         {
             Console.WriteLine("Invalid selection.");
@@ -259,7 +271,6 @@ public void Start()
         }
 
         selectedCardIndex = index;
-
         Card chosen = dungeon.CurrentRoom[index];
 
         selectedCardIndex = index;
@@ -289,8 +300,10 @@ public void Start()
     private void ResetActions()
     {
         hasHealed = false;
-        escapeCount = SetSkips();
         enteringRoom = true;
+
+        if (!optionalRules.LimitedEscapes)
+            escapeCount = SetSkips();
     }
 
 
@@ -320,7 +333,7 @@ public void Start()
         int enemyValue = card.GetValue();
         int damage = 0;
 
-        bool isAltered = weapon.Count > 0 && (weapon.Last().Suit == "♣" || weapon.Last().Suit == "♠");
+        bool isAltered = weapon.Count > 0 && (weapon.Last().Suit == "C" || weapon.Last().Suit == "S");
         bool canMatch = optionalRules.AlteredWeaponCanMatch && isAltered;
 
         
@@ -354,20 +367,20 @@ public void Start()
     {
         switch (card.Suit)
         {
-            case "♥":
+            case "H":
                 ResolveHeart(card);
                 break;
 
-            case "♦":
+            case "D":
                 ResolveDiamond(card);
                 break;
 
-            case "♣":
-            case "♠":
+            case "C":
+            case "S":
                 ResolveEnemy(card, useFists);
                 break;
 
-            case "★":
+            case "JO":
                 HandleJoker();
                 break;
         }
