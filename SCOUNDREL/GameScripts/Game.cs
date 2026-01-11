@@ -275,7 +275,7 @@ public void Start()
 
         selectedCardIndex = index;
 
-        if (chosen.Suit == "★")
+        if (chosen.Suit == "JO")
         {
             
             ResolveCard(chosen, useFists);
