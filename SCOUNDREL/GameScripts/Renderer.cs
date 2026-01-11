@@ -76,32 +76,21 @@ public class Renderer
     // -----------------------------
     private void PrintCardSlot(int index, Card card)
     {
-        // Handle empty slot FIRST
-        if (card == Card.Empty)
-        {
-            PrintBlankSlot(index);
-            return;
-        }
-
         string prefix = $"[{index + 1}] ";
+
+        // Print prefix normally
         Console.Write(prefix);
 
-        // Determine printed symbol
-        string symbol = SuitSymbols.TryGetValue(card.Suit, out var mapped)
-            ? mapped
-            : card.Suit;
-
-        // Print the card with color
+        // Print coloured card text
         PrintCard(card);
 
-        // Compute actual printed width
-        int printedLength = prefix.Length + card.Rank.Length + symbol.Length;
+        // Calculate padding
+        int printedLength = prefix.Length + (card.Rank + card.Suit).Length;
         int padding = SlotWidth - printedLength;
 
         if (padding > 0)
             Console.Write(new string(' ', padding));
     }
-
 
     // -----------------------------
     // FIXED-WIDTH HA! SLOT
@@ -121,7 +110,6 @@ public class Renderer
         if (padding > 0)
             Console.Write(new string(' ', padding));
     }
-
 
     // -----------------------------
     // WEAPON PRINTING
@@ -162,43 +150,23 @@ public class Renderer
     {
         var original = Console.ForegroundColor;
 
-        // Determine color
         if (overrideColor.HasValue)
         {
             Console.ForegroundColor = overrideColor.Value;
         }
-        else if (SuitColors.TryGetValue(card.Suit, out var color))
+        else
         {
-            Console.ForegroundColor = color;
+            if (card.Suit == "♥" || card.Suit == "♦")
+                Console.ForegroundColor = ConsoleColor.Red;
+            else if (card.Suit == "★")
+                Console.ForegroundColor = ConsoleColor.White;
+            else
+                Console.ForegroundColor = ConsoleColor.DarkCyan;
         }
 
-        // Determine symbol
-        string symbol = SuitSymbols.TryGetValue(card.Suit, out var mapped)
-            ? mapped
-            : card.Suit; // fallback
-
-        Console.Write($"{card.Rank}{symbol}");
+        Console.Write($"{card.Rank}{card.Suit}");
         Console.ForegroundColor = original;
     }
-
-
-    private static readonly Dictionary<string, string> SuitSymbols = new Dictionary<string, string>()
-{
-    { "D", "♦" },
-    { "H", "♥" },
-    { "C", "♣" },
-    { "S", "♠" },
-    { "JO", "*" } // keep your joker
-};
-    private static readonly Dictionary<string, ConsoleColor> SuitColors = new Dictionary<string, ConsoleColor>()
-{
-    { "D", ConsoleColor.Red },
-    { "H", ConsoleColor.Red },
-    { "C", ConsoleColor.DarkCyan },
-    { "S", ConsoleColor.DarkCyan },
-    { "JO", ConsoleColor.White }
-};
-
 
     // -----------------------------
     // ANIMATION
@@ -207,7 +175,7 @@ public class Renderer
 
     public void AnimateCardLaughs(List<Card> room, int selectedIndex)
     {
-        const int flashes = 4;
+        const int flashes = 5;
 
         for (int f = 0; f < flashes; f++)
         {
@@ -282,18 +250,15 @@ public class Renderer
     private void PrintBlankSlot(int index)
     {
         string prefix = $"[{index + 1}] ";
-        string blank = "   "; // must match HA! width
+        string blank = "   "; // 3 spaces where HA! was
 
-        Console.Write(prefix);
-        Console.Write(blank);
+        string full = prefix + blank;
+        int padding = SlotWidth - full.Length;
 
-        int printedLength = prefix.Length + blank.Length;
-        int padding = SlotWidth - printedLength;
-
+        Console.Write(full);
         if (padding > 0)
             Console.Write(new string(' ', padding));
     }
-
 
     // -----------------------------
     // UTILITY
@@ -302,14 +267,6 @@ public class Renderer
     {
         haSlots.Clear();
     }
-    //private int GetPrintedCardWidth(Card card)
-    //{
-    //    string symbol = SuitSymbols.TryGetValue(card.Suit, out var mapped)
-    //        ? mapped
-    //        : card.Suit;
-
-    //    return card.Rank.Length + symbol.Length;
-    //}
 
     // -----------------------------
     // WIN / LOSE SCREENS

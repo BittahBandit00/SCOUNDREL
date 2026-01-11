@@ -125,7 +125,6 @@ public class OptionalRulesMenu
             Console.WriteLine($"  [2] Max Turn Count             : {(rules.TurnCount ? "ON" : "OFF")}");
             Console.WriteLine($"  [3] Double Encounters          : {(rules.DoubleEncounters ? "ON" : "OFF")}");
             Console.WriteLine($"  [4] Double Deck                : {(rules.DoubleDeck ? "ON" : "OFF")}");
-            Console.WriteLine($"  [5] Limited Escapes            : {(rules.LimitedEscapes ? "ON" : "OFF")}");
             Console.WriteLine($"  [J] Chaotic Jokers             : {(rules.JokerShuffle ? "ON" : "OFF")}");
             Console.WriteLine();
             Console.WriteLine("-----------------------------------------------");
@@ -147,9 +146,6 @@ public class OptionalRulesMenu
                     break;
                 case "4":
                     rules.DoubleDeck= !rules.DoubleDeck;
-                    break;
-                case "5":
-                    rules.LimitedEscapes = !rules.LimitedEscapes;
                     break;
                 case "j":
                     rules.JokerShuffle = !rules.JokerShuffle;

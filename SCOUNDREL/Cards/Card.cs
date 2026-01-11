@@ -14,7 +14,7 @@
 
     public int GetValue()
     {
-        if (Suit == "H" && heartIsOne)
+        if (Suit == "♥" && heartIsOne)
             return 1;
 
         if (int.TryParse(Rank, out int value))
@@ -42,10 +42,9 @@
     public void SetHeartsToOne()
     {
         heartIsOne = true;
-        if (Suit == "H")
+        if (Suit == "♥")
             Rank = "1";
     }
-    public static readonly Card Empty = new Card("EMPTY", "EMPTY");
 
     public override string ToString() => $"{Rank}{Suit}";
 }

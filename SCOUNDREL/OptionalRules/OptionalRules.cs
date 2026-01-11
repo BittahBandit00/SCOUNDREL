@@ -27,8 +27,6 @@ public class OptionalRules
     public bool DoubleEncounters { get; set; }
     public bool DoubleDeck { get; set; }
 
-    public bool LimitedEscapes { get; set; }
-
 
     // Double Encounters
     // Queens Must Fight
@@ -46,7 +44,6 @@ public class OptionalRules
         JokerShuffle = false;
         DoubleEncounters = false;   
         TurnCount = false;
-        LimitedEscapes = false;
     }
 }
 

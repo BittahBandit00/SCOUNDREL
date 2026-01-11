@@ -31,16 +31,11 @@ public class Dungeon
 
     public void DrawNextRoom()
     {
-        for (int i = 0; i < roomCount; i++)
+        while (CurrentRoom.Count < roomCount && deck.GetCardCount() > 0)
         {
-            if (deck.GetCardCount() == 0)
-                break;
-
-            if (CurrentRoom[i] == Card.Empty)
-                CurrentRoom[i] = deck.Draw();
+            CurrentRoom.Add(deck.Draw());
         }
     }
-
 
 
     public void SkipRoom()

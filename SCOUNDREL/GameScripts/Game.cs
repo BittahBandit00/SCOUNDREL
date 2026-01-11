@@ -24,7 +24,7 @@ public class Game
 
     //optional rules
     private int escapeCount = 1;
-    private int limitedEscape = 5;
+    private bool doubleDeck = false;
     private bool infiniteHeals = false;
     private bool ShowCardsRemaining = false;
     private bool turnCounter = false;
@@ -50,12 +50,6 @@ public class Game
         turnCounter = optionalRules.TurnCount;
         dungeon.SetRoomCount(optionalRules.DoubleEncounters ? 8 : 4);
 
-        // LIMITED ESCAPES RULE
-        if (optionalRules.LimitedEscapes)
-        {
-            escapeCount = limitedEscape; // or whatever number you want
-        }
-
         if (optionalRules.LowAces)
         {
             foreach (var card in deck.cards)
@@ -73,11 +67,11 @@ public class Game
         {
             // Debug jokers
             //for (int i = 0; i < 20; i++)
-            //    deck.cards.Add(new Card("JO", "JO"));
+            //    deck.cards.Add(new Card("JO", "★"));
 
             // Base jokers
-            deck.cards.Add(new Card("JO", "JO"));
-            deck.cards.Add(new Card("JO", "JO"));
+            deck.cards.Add(new Card("JO", "★"));
+            deck.cards.Add(new Card("JO", "★"));
         }
 
         if (optionalRules.DoubleDeck)
@@ -99,15 +93,12 @@ public class Game
         if (optionalRules.JokerShuffle && optionalRules.DoubleDeck)
         {
             // Remove all jokers
-            deck.cards.RemoveAll(c => c.Suit == "JO" && c.Rank == "JO");
+            deck.cards.RemoveAll(c => c.Suit == "★" && c.Rank == "JO");
 
             // Add exactly 4 jokers
             for (int i = 0; i < 4; i++)
-                deck.cards.Add(new Card("JO", "JO"));
+                deck.cards.Add(new Card("JO", "★"));
         }
-
-    
-
 
     }
 
@@ -238,23 +229,21 @@ public void Start()
     }
 
     private int selectedCardIndex = -1;
-
     private void HandleCardSelection()
     {
         string raw = input.GetCardSelection(dungeon.CurrentRoom.Count);
-        string trimmed = raw.Trim().ToLower();
 
         bool useFists = false;
 
-        // Detect bare‑handed mode
-        if (trimmed.EndsWith("b") || trimmed.EndsWith("bare") ||
-            trimmed.EndsWith("fists") || trimmed.EndsWith("f"))
+        string trimmed = raw.Trim().ToLower();
+
+        // detect bare‑handed mode
+        if (trimmed.EndsWith("b") || trimmed.EndsWith("bare") || trimmed.EndsWith("fists") || trimmed.EndsWith("f"))
         {
             useFists = true;
             trimmed = new string(trimmed.TakeWhile(char.IsDigit).ToArray());
         }
 
-        // Validate number
         if (!int.TryParse(trimmed, out int index))
         {
             Console.WriteLine("Invalid selection.");
@@ -263,7 +252,6 @@ public void Start()
 
         index -= 1;
 
-        // Validate range
         if (index < 0 || index >= dungeon.CurrentRoom.Count)
         {
             Console.WriteLine("Invalid selection.");
@@ -271,52 +259,38 @@ public void Start()
         }
 
         selectedCardIndex = index;
+
         Card chosen = dungeon.CurrentRoom[index];
 
-        // Remove non‑joker cards from the room
-        if (chosen.Suit != "JO")
-            dungeon.CurrentRoom[index] = Card.Empty;
+        selectedCardIndex = index;
 
-        ResolveCard(chosen, useFists);
-
-        if(chosen.Suit != "EMPTY")
-        MinusTurn();
-
-        // Move last remaining card to index 0
-        var remaining = dungeon.CurrentRoom
-            .Select((c, i) => new { Card = c, Index = i })
-            .Where(x => x.Card != Card.Empty)
-            .ToList();
-
-        if (remaining.Count == 1)
+        if (chosen.Suit == "★")
         {
-            var last = remaining[0];
-
-            // Move card to slot 0
-            dungeon.CurrentRoom[0] = last.Card;
-
-            // Empty the old slot if needed
-            if (last.Index != 0)
-                dungeon.CurrentRoom[last.Index] = Card.Empty;
+            
+            ResolveCard(chosen, useFists);
+        }
+        else
+        {
+            
+            dungeon.CurrentRoom.RemoveAt(index);
+            ResolveCard(chosen, useFists);
         }
 
+        MinusTurn();
 
-        // Auto‑refill if only one card remains
-        if (dungeon.CurrentRoom.Count(c => c != Card.Empty) == 1 && deck.GetCardCount() > 0)
+        if (dungeon.CurrentRoom.Count == 1 && deck.GetCardCount() > 0)
         {
             dungeon.DrawNextRoom();
             ResetActions();
+          
         }
-
     }
 
     private void ResetActions()
     {
         hasHealed = false;
+        escapeCount = SetSkips();
         enteringRoom = true;
-
-        if (!optionalRules.LimitedEscapes)
-            escapeCount = SetSkips();
     }
 
 
@@ -346,7 +320,7 @@ public void Start()
         int enemyValue = card.GetValue();
         int damage = 0;
 
-        bool isAltered = weapon.Count > 0 && (weapon.Last().Suit == "C" || weapon.Last().Suit == "S");
+        bool isAltered = weapon.Count > 0 && (weapon.Last().Suit == "♣" || weapon.Last().Suit == "♠");
         bool canMatch = optionalRules.AlteredWeaponCanMatch && isAltered;
 
         
@@ -380,20 +354,20 @@ public void Start()
     {
         switch (card.Suit)
         {
-            case "H":
+            case "♥":
                 ResolveHeart(card);
                 break;
 
-            case "D":
+            case "♦":
                 ResolveDiamond(card);
                 break;
 
-            case "C":
-            case "S":
+            case "♣":
+            case "♠":
                 ResolveEnemy(card, useFists);
                 break;
 
-            case "JO":
+            case "★":
                 HandleJoker();
                 break;
         }
